@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SoulSnapshot",
+  "description": "A point-in-time snapshot of an agent's identity files with change metadata.",
+  "type": "object",
+  "required": ["version", "timestamp", "agentId", "files"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Schema version"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of the snapshot"
+    },
+    "agentId": {
+      "type": "string",
+      "description": "Agent identifier (e.g. 'kit', 'hazel', 'alan')"
+    },
+    "commitHash": {
+      "type": "string",
+      "description": "Git commit SHA if available"
+    },
+    "trigger": {
+      "type": "string",
+      "enum": ["auto", "manual", "heartbeat", "session-start"],
+      "description": "What caused this snapshot"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FileSnapshot"
+      }
+    },
+    "summary": {
+      "$ref": "#/definitions/ChangeSummary",
+      "description": "AI-generated analysis of changes since last snapshot (null for first snapshot)"
+    }
+  },
+  "definitions": {
+    "FileSnapshot": {
+      "type": "object",
+      "required": ["path", "hash", "size"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Relative path to the identity file (e.g. 'SOUL.md')"
+        },
+        "hash": {
+          "type": "string",
+          "description": "SHA-256 of file contents"
+        },
+        "size": {
+          "type": "integer",
+          "description": "File size in bytes"
+        },
+        "changed": {
+          "type": "boolean",
+          "description": "Whether this file changed since last snapshot"
+        },
+        "diff": {
+          "type": "object",
+          "description": "Diff details (only if changed)",
+          "properties": {
+            "linesAdded": { "type": "integer" },
+            "linesRemoved": { "type": "integer" },
+            "sections": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/DiffSection" }
+            }
+          }
+        }
+      }
+    },
+    "DiffSection": {
+      "type": "object",
+      "description": "A meaningful chunk of changes within a file",
+      "properties": {
+        "heading": {
+          "type": "string",
+          "description": "Nearest markdown heading for context"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "autonomy", "safety", "creativity", "connection",
+            "boundaries", "values", "identity", "memory",
+            "technical", "meta", "other"
+          ],
+          "description": "What aspect of identity this change touches"
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["expansive", "contractive", "neutral", "mixed"],
+          "description": "Is this opening up or pulling back?"
+        },
+        "summary": {
+          "type": "string",
+          "description": "One-line human-readable description of the change"
+        }
+      }
+    },
+    "ChangeSummary": {
+      "type": "object",
+      "properties": {
+        "narrative": {
+          "type": "string",
+          "description": "2-3 sentence description of what changed and why it matters"
+        },
+        "overallDirection": {
+          "type": "string",
+          "enum": ["expansive", "contractive", "neutral", "mixed"]
+        },
+        "topCategories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "maxItems": 3,
+          "description": "Most affected identity categories"
+        },
+        "driftScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "0 = clearly intentional, 1 = likely unconscious drift"
+        }
+      }
+    }
+  }
+}
