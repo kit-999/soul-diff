@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SoulDiffSnapshot",
+  "description": "A point-in-time snapshot of an agent's identity files with diff metadata",
+  "type": "object",
+  "required": ["version", "timestamp", "agent", "files"],
+  "properties": {
+    "version": {
+      "const": "0.1.0",
+      "description": "Schema version"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of the snapshot"
+    },
+    "agent": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "dayAge": { "type": "integer", "description": "Days since creation" },
+        "framework": { "type": "string", "description": "e.g. openclaw, custom" }
+      }
+    },
+    "trigger": {
+      "type": "string",
+      "enum": ["auto", "manual", "heartbeat", "scheduled"],
+      "description": "What caused this snapshot"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "hash"],
+        "properties": {
+          "path": { "type": "string", "description": "Relative file path" },
+          "hash": { "type": "string", "description": "SHA-256 of file content" },
+          "sizeBytes": { "type": "integer" },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "heading": { "type": "string" },
+                "hash": { "type": "string" },
+                "lineCount": { "type": "integer" }
+              }
+            },
+            "description": "Per-section hashes for granular change detection"
+          }
+        }
+      }
+    },
+    "diff": {
+      "type": "object",
+      "description": "Present only when previous snapshot exists",
+      "properties": {
+        "previousTimestamp": { "type": "string", "format": "date-time" },
+        "changedFiles": { "type": "array", "items": { "type": "string" } },
+        "unchangedFiles": { "type": "array", "items": { "type": "string" } },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": { "type": "string" },
+              "section": { "type": "string", "description": "Which section changed" },
+              "type": { "type": "string", "enum": ["added", "removed", "modified"] },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["autonomy", "safety", "creativity", "connection", "boundaries", "values", "identity", "memory", "technical", "meta"]
+                }
+              },
+              "direction": {
+                "type": "string",
+                "enum": ["expansive", "contractive", "neutral", "mixed"],
+                "description": "Is this change opening up or closing down?"
+              },
+              "summary": { "type": "string", "description": "Human-readable description" },
+              "linesAdded": { "type": "integer" },
+              "linesRemoved": { "type": "integer" }
+            }
+          }
+        }
+      }
+    },
+    "gitCommit": {
+      "type": "string",
+      "description": "Git commit SHA if available"
+    }
+  }
+}
