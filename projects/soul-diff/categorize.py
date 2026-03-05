@@ -23,6 +23,12 @@ CATEGORIES = {
 POROUS_RE = re.compile(r"maybe|might|not sure|figuring|wondering|don't know|tbd|wip|todo", re.I)
 FOSSIL_RE = re.compile(r"NEVER|always|non-negotiable|period\.|rule:", re.I)
 
+# Scope annotations (Ariel's range-limited truths, 2026-03-04)
+# Local: context-dependent, situational, time-bound
+# Universal: sweeping claims about identity, values, always/never
+SCOPE_LOCAL_RE = re.compile(r"right now|currently|lately|today|this week|for now|at the moment|in this context|when \w+|if \w+", re.I)
+SCOPE_UNIVERSAL_RE = re.compile(r"I am |I will |I always|I never|who I am|core |fundamental|define me|my identity|I believe|I value", re.I)
+
 os.chdir(WORKSPACE)
 
 results = []
@@ -56,6 +62,18 @@ for f in IDENTITY_FILES:
     porous = len(POROUS_RE.findall(added_text))
     fossilized = len(FOSSIL_RE.findall(added_text))
 
+    # Scope analysis: are new claims local/contextual or universal?
+    scope_local = len(SCOPE_LOCAL_RE.findall(added_text))
+    scope_universal = len(SCOPE_UNIVERSAL_RE.findall(added_text))
+    if scope_universal > 0 and scope_local == 0:
+        scope = "universal"
+    elif scope_local > 0 and scope_universal == 0:
+        scope = "local"
+    elif scope_local > 0 and scope_universal > 0:
+        scope = "mixed"
+    else:
+        scope = "unknown"
+
     results.append({
         "file": f,
         "linesAdded": la,
@@ -63,6 +81,7 @@ for f in IDENTITY_FILES:
         "categories": cats,
         "direction": direction,
         "porosity": {"porous": porous, "fossilized": fossilized},
+        "scope": {"classification": scope, "localSignals": scope_local, "universalSignals": scope_universal},
     })
 
 output = {"range": RANGE, "files": results}

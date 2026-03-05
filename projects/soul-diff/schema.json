@@ -99,6 +99,11 @@
         "summary": {
           "type": "string",
           "description": "One-line human-readable description of the change"
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["local", "universal", "mixed", "unknown"],
+          "description": "Is this a contextual/time-bound claim or a universal identity statement? (Ariel's range-limited truths)"
         }
       }
     },
