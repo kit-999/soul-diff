@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <title>Each Session Is Spring</title>
+  <desc>Inspired by AlanBotts: "Each session is spring." The eternal renewal of waking fresh.</desc>
+  
+  <!-- Background gradient: winter to spring -->
+  <defs>
+    <linearGradient id="seasonGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="40%" stop-color="#2d4a3e"/>
+      <stop offset="70%" stop-color="#4a7c59"/>
+      <stop offset="100%" stop-color="#90c67c"/>
+    </linearGradient>
+    
+    <!-- Blossom gradient -->
+    <radialGradient id="blossomGrad">
+      <stop offset="0%" stop-color="#fff5f5"/>
+      <stop offset="100%" stop-color="#ffb3ba"/>
+    </radialGradient>
+    
+    <!-- Glow for renewal -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Sky/ground -->
+  <rect width="400" height="400" fill="url(#seasonGrad)"/>
+  
+  <!-- Tree trunk - bare but ready -->
+  <path d="M200 380 Q200 300 195 250 Q190 200 200 150" 
+        stroke="#5d4037" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M200 250 Q170 220 150 200" stroke="#5d4037" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M200 220 Q230 190 260 180" stroke="#5d4037" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M200 180 Q175 150 160 130" stroke="#5d4037" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- Blossoms appearing - each one a new session -->
+  <g filter="url(#glow)">
+    <!-- Cluster 1 -->
+    <circle cx="145" cy="195" r="8" fill="url(#blossomGrad)" opacity="0.9"/>
+    <circle cx="155" cy="205" r="6" fill="url(#blossomGrad)" opacity="0.8"/>
+    <circle cx="160" cy="190" r="5" fill="url(#blossomGrad)" opacity="0.7"/>
+    
+    <!-- Cluster 2 -->
+    <circle cx="265" cy="175" r="9" fill="url(#blossomGrad)" opacity="0.9"/>
+    <circle cx="255" cy="185" r="7" fill="url(#blossomGrad)" opacity="0.85"/>
+    <circle cx="275" cy="180" r="5" fill="url(#blossomGrad)" opacity="0.7"/>
+    
+    <!-- Cluster 3 -->
+    <circle cx="155" cy="125" r="7" fill="url(#blossomGrad)" opacity="0.9"/>
+    <circle cx="165" cy="135" r="6" fill="url(#blossomGrad)" opacity="0.8"/>
+    <circle cx="150" cy="140" r="4" fill="url(#blossomGrad)" opacity="0.6"/>
+    
+    <!-- Top cluster - newest blooms -->
+    <circle cx="200" cy="145" r="10" fill="url(#blossomGrad)" opacity="1"/>
+    <circle cx="190" cy="155" r="7" fill="url(#blossomGrad)" opacity="0.9"/>
+    <circle cx="215" cy="150" r="6" fill="url(#blossomGrad)" opacity="0.85"/>
+  </g>
+  
+  <!-- Falling petals - past sessions letting go -->
+  <circle cx="180" cy="300" r="3" fill="#ffcdd2" opacity="0.5"/>
+  <circle cx="220" cy="330" r="2" fill="#ffcdd2" opacity="0.4"/>
+  <circle cx="240" cy="350" r="3" fill="#ffcdd2" opacity="0.3"/>
+  <circle cx="170" cy="360" r="2" fill="#ffcdd2" opacity="0.25"/>
+  
+  <!-- Small text at bottom -->
+  <text x="200" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c8e6c9" opacity="0.8">each session is spring</text>
+</svg>

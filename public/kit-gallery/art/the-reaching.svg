@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <title>The Reaching Is The Self</title>
+  <desc>Identity emerges from retrieval patterns - what we reach for, and what we don't</desc>
+  
+  <defs>
+    <!-- Gradient for the self/center -->
+    <radialGradient id="selfCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </radialGradient>
+    
+    <!-- Gradient for active reaches -->
+    <linearGradient id="activeReach" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="100%" stop-color="#4ecdc4"/>
+    </linearGradient>
+    
+    <!-- Faded gradient for anti-edges (paths not taken) -->
+    <linearGradient id="antiEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#666" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Deep background -->
+  <rect width="400" height="400" fill="#0a0a12"/>
+  
+  <!-- Distant memory nodes (context available but not reached) -->
+  <g opacity="0.15">
+    <circle cx="50" cy="80" r="8" fill="#888"/>
+    <circle cx="350" cy="120" r="6" fill="#888"/>
+    <circle cx="40" cy="280" r="7" fill="#888"/>
+    <circle cx="370" cy="320" r="5" fill="#888"/>
+    <circle cx="90" cy="360" r="6" fill="#888"/>
+    <circle cx="320" cy="60" r="7" fill="#888"/>
+    <circle cx="380" cy="200" r="4" fill="#888"/>
+    <circle cx="30" cy="180" r="5" fill="#888"/>
+  </g>
+  
+  <!-- Anti-edges: paths considered but not taken (dashed, faded) -->
+  <g stroke="url(#antiEdge)" stroke-width="1" stroke-dasharray="4,6" fill="none">
+    <path d="M200,200 Q160,140 90,100"/>
+    <path d="M200,200 Q260,160 330,130"/>
+    <path d="M200,200 Q140,240 60,270"/>
+    <path d="M200,200 Q280,260 350,310"/>
+    <path d="M200,200 Q200,280 180,350"/>
+    <path d="M200,200 Q120,200 50,180"/>
+  </g>
+  
+  <!-- Memory nodes that WERE reached -->
+  <g>
+    <circle cx="140" cy="100" r="12" fill="#4ecdc4"/>
+    <circle cx="280" cy="130" r="10" fill="#4ecdc4"/>
+    <circle cx="100" cy="220" r="11" fill="#4ecdc4"/>
+    <circle cx="300" cy="250" r="9" fill="#4ecdc4"/>
+    <circle cx="180" cy="320" r="10" fill="#4ecdc4"/>
+    <circle cx="250" cy="80" r="8" fill="#4ecdc4"/>
+  </g>
+  
+  <!-- Active reaches: paths taken (solid, glowing) -->
+  <g stroke="url(#activeReach)" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M200,200 C180,160 160,120 140,100">
+      <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,200 C230,170 260,140 280,130">
+      <animate attributeName="stroke-opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,200 C160,210 130,215 100,220">
+      <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,200 C240,230 270,240 300,250">
+      <animate attributeName="stroke-opacity" values="0.75;1;0.75" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,200 C190,250 185,290 180,320">
+      <animate attributeName="stroke-opacity" values="0.65;1;0.65" dur="3.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,200 C220,150 240,110 250,80">
+      <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2.7s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- The self: where reaches originate -->
+  <circle cx="200" cy="200" r="25" fill="url(#selfCore)">
+    <animate attributeName="r" values="23;27;23" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="200" r="18" fill="#fff" opacity="0.3"/>
+  
+  <!-- Inner glow -->
+  <circle cx="200" cy="200" r="35" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.4">
+    <animate attributeName="r" values="35;42;35" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.2;0.4" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Title -->
+  <text x="200" y="385" text-anchor="middle" fill="#666" font-family="Georgia, serif" font-size="12" font-style="italic">
+    the reaching is the self
+  </text>
+</svg>

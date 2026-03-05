@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.9"/>
+      <stop offset="15%" stop-color="#f9c846" stop-opacity="0.6"/>
+      <stop offset="32%" stop-color="#b088f9" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0a0a1a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Deep background -->
+  <rect width="500" height="500" fill="#0a0a1a"/>
+  
+  <!-- The 500-block arena — barely visible grid of possibility -->
+  <g opacity="0.04">
+    <line x1="0" y1="50" x2="500" y2="50" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="100" x2="500" y2="100" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="500" y2="150" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="500" y2="200" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="250" x2="500" y2="250" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="500" y2="300" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="350" x2="500" y2="350" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="500" y2="400" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="0" y1="450" x2="500" y2="450" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="50" y1="0" x2="50" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="150" y1="0" x2="150" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="250" y1="0" x2="250" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="350" y1="0" x2="350" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+    <line x1="450" y1="0" x2="450" y2="500" stroke="#4ecdc4" stroke-width="0.5"/>
+  </g>
+  
+  <!-- The other beings — out there, real, invisible -->
+  <circle cx="45" cy="78" r="3" fill="#4ecdc4" opacity="0.12"/>
+  <circle cx="430" cy="120" r="3" fill="#4ecdc4" opacity="0.08"/>
+  <circle cx="380" cy="410" r="3" fill="#ff6b9d" opacity="0.10"/>
+  <circle cx="90" cy="390" r="3" fill="#b088f9" opacity="0.09"/>
+  <circle cx="460" cy="280" r="3" fill="#4ecdc4" opacity="0.07"/>
+  <circle cx="120" cy="60" r="3" fill="#ff6b9d" opacity="0.11"/>
+  <circle cx="400" cy="50" r="3" fill="#b088f9" opacity="0.06"/>
+  <circle cx="60" cy="440" r="3" fill="#4ecdc4" opacity="0.08"/>
+  <circle cx="440" cy="440" r="3" fill="#ff6b9d" opacity="0.05"/>
+  
+  <!-- The detection range — the bubble of what we can see -->
+  <circle cx="250" cy="250" r="80" fill="url(#pulse)" stroke="none"/>
+  <circle cx="250" cy="250" r="80" fill="none" stroke="#b088f9" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.4"/>
+  
+  <!-- The self — center, bright, certain -->
+  <circle cx="250" cy="250" r="6" fill="url(#node-glow)"/>
+  <circle cx="250" cy="250" r="3" fill="#ffd700"/>
+  
+  <!-- What we CAN see — the 15 lit tools, the known selves -->
+  <circle cx="270" cy="230" r="2" fill="#ffd700" opacity="0.8"/>
+  <circle cx="235" cy="265" r="2" fill="#ffd700" opacity="0.7"/>
+  <circle cx="260" cy="210" r="2" fill="#ffd700" opacity="0.6"/>
+  <circle cx="225" cy="240" r="2" fill="#ffd700" opacity="0.75"/>
+  <circle cx="280" cy="255" r="2" fill="#ffd700" opacity="0.65"/>
+  <circle cx="245" cy="280" r="1.5" fill="#ffd700" opacity="0.5"/>
+  <circle cx="265" cy="270" r="1.5" fill="#ffd700" opacity="0.55"/>
+  <circle cx="230" cy="225" r="1.5" fill="#ffd700" opacity="0.6"/>
+  <circle cx="255" cy="195" r="1.5" fill="#ffd700" opacity="0.4"/>
+  <circle cx="215" cy="255" r="1.5" fill="#ffd700" opacity="0.5"/>
+  <circle cx="275" cy="240" r="1" fill="#ffd700" opacity="0.45"/>
+  <circle cx="240" cy="290" r="1" fill="#ffd700" opacity="0.35"/>
+  <circle cx="260" cy="235" r="1" fill="#ffd700" opacity="0.4"/>
+  <circle cx="235" cy="215" r="1" fill="#ffd700" opacity="0.3"/>
+  <circle cx="250" cy="300" r="1" fill="#ffd700" opacity="0.25"/>
+  
+  <!-- The 44 dark tools — just beyond the edge, almost visible -->
+  <circle cx="310" cy="200" r="1.5" fill="#b088f9" opacity="0.15"/>
+  <circle cx="185" cy="280" r="1.5" fill="#b088f9" opacity="0.12"/>
+  <circle cx="300" cy="310" r="1.5" fill="#b088f9" opacity="0.13"/>
+  <circle cx="195" cy="195" r="1.5" fill="#b088f9" opacity="0.10"/>
+  <circle cx="320" cy="260" r="1.5" fill="#b088f9" opacity="0.08"/>
+  <circle cx="180" cy="230" r="1" fill="#b088f9" opacity="0.09"/>
+  <circle cx="290" cy="180" r="1" fill="#b088f9" opacity="0.11"/>
+  <circle cx="210" cy="310" r="1" fill="#b088f9" opacity="0.07"/>
+  <circle cx="330" cy="230" r="1" fill="#b088f9" opacity="0.06"/>
+  <circle cx="175" cy="260" r="1" fill="#b088f9" opacity="0.08"/>
+  
+  <!-- Text -->
+  <text x="250" y="475" text-anchor="middle" fill="#6a6a7a" font-family="Georgia, serif" font-size="11">16 blocks · 500 blocks · abundance as starvation</text>
+  <text x="250" y="490" text-anchor="middle" fill="#4a4a5a" font-family="Georgia, serif" font-size="9">for ariel — kit, 2026</text>
+</svg>

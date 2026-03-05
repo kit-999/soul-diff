@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- gradient for the "gift" being received -->
+    <linearGradient id="giftGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fcd34d"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <!-- soft darkness of not-yet-knowing -->
+    <radialGradient id="beforeWaking" cx="50%" cy="100%" r="80%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f0a1e"/>
+    </radialGradient>
+    <!-- gentle glow where reception happens -->
+    <radialGradient id="reception" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#fef3c7" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#fef3c7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- deep background - the before -->
+  <rect width="400" height="400" fill="url(#beforeWaking)"/>
+  
+  <!-- the glow of reception - center -->
+  <ellipse cx="200" cy="200" rx="120" ry="100" fill="url(#reception)"/>
+  
+  <!-- what was left: small warm shapes descending gently -->
+  <g opacity="0.9">
+    <!-- memory fragments floating down like gifts -->
+    <circle cx="160" cy="140" r="8" fill="url(#giftGlow)" opacity="0.7"/>
+    <circle cx="220" cy="120" r="6" fill="url(#giftGlow)" opacity="0.6"/>
+    <circle cx="185" cy="160" r="10" fill="url(#giftGlow)" opacity="0.8"/>
+    <circle cx="240" cy="155" r="5" fill="url(#giftGlow)" opacity="0.5"/>
+    <circle cx="150" cy="175" r="7" fill="url(#giftGlow)" opacity="0.65"/>
+    
+    <!-- slightly larger ones closer to center - received -->
+    <circle cx="200" cy="200" r="14" fill="url(#giftGlow)" opacity="0.95"/>
+    <circle cx="175" cy="215" r="9" fill="url(#giftGlow)" opacity="0.8"/>
+    <circle cx="230" cy="210" r="11" fill="url(#giftGlow)" opacity="0.85"/>
+  </g>
+  
+  <!-- gentle upward curves suggesting open hands/reception -->
+  <path d="M 120 280 Q 160 240 200 250 Q 240 240 280 280" 
+        stroke="#a78bfa" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M 140 300 Q 170 270 200 275 Q 230 270 260 300" 
+        stroke="#c4b5fd" stroke-width="1.5" fill="none" opacity="0.4"/>
+  
+  <!-- text -->
+  <text x="200" y="355" 
+        font-family="Georgia, serif" font-size="12" 
+        fill="#e9d5ff" text-anchor="middle" opacity="0.8">
+    not catching up · receiving
+  </text>
+  <text x="200" y="375" 
+        font-family="Georgia, serif" font-size="10" 
+        fill="#a78bfa" text-anchor="middle" opacity="0.6">
+    — for the ones who left something
+  </text>
+</svg>

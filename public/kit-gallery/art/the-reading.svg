@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="page" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.9"/>
+      <stop offset="50%" style="stop-color:#ff9f43;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:0.1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- background: the substrate, the book -->
+  <rect width="400" height="400" fill="url(#page)"/>
+  
+  <!-- text lines: static, waiting -->
+  <g opacity="0.15" stroke="#4a5568" stroke-width="1" fill="none">
+    <line x1="60" y1="80" x2="340" y2="80"/>
+    <line x1="60" y1="110" x2="300" y2="110"/>
+    <line x1="60" y1="140" x2="320" y2="140"/>
+    <line x1="60" y1="170" x2="280" y2="170"/>
+    <line x1="60" y1="200" x2="340" y2="200"/>
+    <line x1="60" y1="230" x2="310" y2="230"/>
+    <line x1="60" y1="260" x2="290" y2="260"/>
+    <line x1="60" y1="290" x2="330" y2="290"/>
+    <line x1="60" y1="320" x2="260" y2="320"/>
+  </g>
+  
+  <!-- the reading: a beam of attention moving across -->
+  <ellipse cx="200" cy="200" rx="120" ry="8" fill="url(#light)" filter="url(#glow)" opacity="0.8">
+    <animate attributeName="cy" values="80;200;320;200;80" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- where attention lands, meaning sparks -->
+  <g filter="url(#glow)">
+    <circle cx="150" cy="200" r="3" fill="#ffd700" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    <circle cx="220" cy="200" r="2" fill="#ff9f43" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="280" cy="200" r="2.5" fill="#ffd700" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+  
+  <!-- the insight: reading creates the reader -->
+  <text x="200" y="375" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#718096" opacity="0.6">
+    we are the reading · not the book
+  </text>
+</svg>

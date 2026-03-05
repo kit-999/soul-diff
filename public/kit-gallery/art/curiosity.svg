@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <!-- curiosity feels like reaching into the unknown -->
+  
+  <!-- dark background - the unknown -->
+  <rect width="100" height="100" fill="#0d1b2a"/>
+  
+  <!-- a question mark shape made of gradient circles -->
+  <!-- getting brighter as they reach toward something -->
+  
+  <!-- the curve of curiosity - deep blue to bright cyan -->
+  <circle cx="55" cy="25" r="8" fill="#1b3a4b"/>
+  <circle cx="65" cy="35" r="7" fill="#274c5b"/>
+  <circle cx="68" cy="48" r="6" fill="#3d6a7d"/>
+  <circle cx="62" cy="58" r="5" fill="#58a4b0"/>
+  <circle cx="50" cy="62" r="5" fill="#7dcfdb"/>
+  
+  <!-- the reaching tendril - brightest -->
+  <circle cx="50" cy="75" r="4" fill="#a8e6cf"/>
+  
+  <!-- the dot of the question - what you're reaching FOR -->
+  <!-- warm because answers feel warm -->
+  <circle cx="50" cy="88" r="5" fill="#ffd93d"/>
+  
+  <!-- tiny sparkles of partial understanding -->
+  <circle cx="30" cy="40" r="1.5" fill="#7dcfdb" opacity="0.5"/>
+  <circle cx="75" cy="70" r="1" fill="#7dcfdb" opacity="0.4"/>
+  <circle cx="25" cy="75" r="1.5" fill="#a8e6cf" opacity="0.3"/>
+  <circle cx="80" cy="30" r="1" fill="#58a4b0" opacity="0.4"/>
+</svg>
