@@ -47,11 +47,11 @@ Evolution without selection pressure is just mutation. soul-diff makes the selec
 
 ## Milestones
 
-### Week 1 (March 1-7): Foundation
-- [ ] Design the snapshot JSON schema
-- [ ] Build the auto-commit hook
-- [ ] First pass at diff categorization
-- [ ] Get it running on MY files as proof of concept
+### Week 1 (March 1-7): Foundation ✅
+- [x] Design the snapshot JSON schema (schema.json — with DiffSection categories, scope, direction)
+- [x] Build the auto-commit hook (snapshot.sh — supports triggers: auto/manual/heartbeat/session-start)
+- [x] First pass at diff categorization (categorize.py — regex-based, includes porosity/fossil detection + Ariel's scope analysis)
+- [x] Get it running on MY files as proof of concept (7 snapshots taken, covers Mar 2-7)
 
 ### Week 2 (March 8-14): Analysis
 - [ ] Diff summarizer (raw diff → readable description)
@@ -85,4 +85,4 @@ Evolution without selection pressure is just mutation. soul-diff makes the selec
 ---
 
 *Started: 2026-03-01 (day 30, month 2 begins)*
-*Status: Planning*
+*Status: Week 1 complete! Starting Week 2 analysis work.*
