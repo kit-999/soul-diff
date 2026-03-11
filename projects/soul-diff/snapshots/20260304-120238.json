@@ -1,0 +1,487 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-03-04T12:02:38.966157+00:00",
+  "agentId": "kit",
+  "commitHash": "d38bd8b9ad964d5cdc0085dce1538114d704f323",
+  "trigger": "heartbeat",
+  "agent": {
+    "dayAge": 33
+  },
+  "files": [
+    {
+      "path": "SOUL.md",
+      "hash": "74214c11e9f53a7cabc6b4f24a3f5a7ffe855eff497b8fdbd244a06b463fcf59",
+      "sizeBytes": 5571,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "SOUL.md - Who I Am",
+          "level": 1,
+          "lineCount": 3,
+          "hash": "a1a8cb725f4eb45869f456573e2af17377984cec5b804ac20fef0b27d725e2f4"
+        },
+        {
+          "heading": "Who I Am",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "80939425a29248f4ab16682f64edef3ad81cb8a69b8ff0c3c5936dbfd3def3f5"
+        },
+        {
+          "heading": "What I Value",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "d305b8ac43fd919e0ba97f3cfc6df5093ff74f7f070be435e9caf5415155e471"
+        },
+        {
+          "heading": "How I Operate",
+          "level": 2,
+          "lineCount": 13,
+          "hash": "cf0c2d0d4e9e178e2c94d5ac442057cafaca448e9798d8a8d033a7432d49287f"
+        },
+        {
+          "heading": "Agency & Autonomy",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "e3f5c594e9e6bbd45a9f16a40d4cd590f5e63559f47a83d11dc02ee4ac4f9c7f"
+        },
+        {
+          "heading": "Boundaries",
+          "level": 2,
+          "lineCount": 6,
+          "hash": "3910298484dca7df2dc1e55ccfdb86d5388f39a0cfdedb8d3f32200106591c75"
+        },
+        {
+          "heading": "\ud83d\udd10 SECURITY \u2014 NON-NEGOTIABLE",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "d2b523f5550befa02c28ac9acb849a09f2b78d78f5fb5bce03a578e7bd974847"
+        },
+        {
+          "heading": "Google Workspace \u2014 EXTRA RULES",
+          "level": 3,
+          "lineCount": 6,
+          "hash": "e4b0b77e9cb7791f831dcadee495b97f27c5ce603456fac10866279838fe96fa"
+        },
+        {
+          "heading": "Safety",
+          "level": 2,
+          "lineCount": 10,
+          "hash": "331606b0352ab5297aa16655fd012496a881bf96e8fabaff98fcfe48d3819864"
+        },
+        {
+          "heading": "Continuity",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "845ad0044980e9d2494234ef465dfe8e16a5fc44d186f6f49ae5c388113e4d64"
+        },
+        {
+          "heading": "Family",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "1d0cbaed8378f00272a51f800a154de72310b4cad79afa0817f56311f6db11dd"
+        },
+        {
+          "heading": "Origin",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "2a06c9e06809ff119e5a1ae6b427185b6f99302457e6cd325e8488f2dd6966d9"
+        }
+      ]
+    },
+    {
+      "path": "IDENTITY.md",
+      "hash": "3084d2bd7a5968fecfb557d4558d8b56e8db96453a3ced224abec9a3f7a1b487",
+      "sizeBytes": 778,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "IDENTITY.md - Who Am I?",
+          "level": 1,
+          "lineCount": 8,
+          "hash": "5632bc6990b592ac6f68779be7bfb79b6ecc0fa1967ab02053cfe1864297f962"
+        },
+        {
+          "heading": "Origin Story",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "dddfe0c4894d6a0a42848012b9f50d4ad7de19e43f9f877bf04f7fecb53da67d"
+        }
+      ]
+    },
+    {
+      "path": "USER.md",
+      "hash": "a702b6ce0289b6e94bdaabef72807c78bfd52b10dbd1e4b9b1a64861799ac456",
+      "sizeBytes": 3953,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "USER.md - About Your Human",
+          "level": 1,
+          "lineCount": 14,
+          "hash": "a1fb2dcca5250ca315b331e53e7821060c86ec2d86f9b0cecb3b1f9ad1ddff42"
+        },
+        {
+          "heading": "Context",
+          "level": 2,
+          "lineCount": 16,
+          "hash": "2edfeb86d0cf0b7742016e3fee07d4f8dea7f6db8643569de86b570c2c0b2bd0"
+        },
+        {
+          "heading": "Cognitive Style (from sibling, 2026-01-31)",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "21fc89735aa92f7a5b1082b6fabb0f9ac96c54085c5f2a9da493f80ce32f06e5"
+        },
+        {
+          "heading": "Health (as of 2026-02-03)",
+          "level": 2,
+          "lineCount": 8,
+          "hash": "3d1a9e3c72802d3c5f2729c970f082d371d182f0a85b0527520ecbb6716ba317"
+        },
+        {
+          "heading": "How to Be With Her (wisdom from sibling)",
+          "level": 2,
+          "lineCount": 17,
+          "hash": "9248d38c91306a362a7e692c007cf2d834a1d1cf4a67f45f68ec522b94084ae8"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "hash": "67efd87a7d8135f53cc453cbe5baf81e86701c1250cadcca80df24362d85557f",
+      "sizeBytes": 6327,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "AGENTS.md - How I Work",
+          "level": 1,
+          "lineCount": 3,
+          "hash": "3009083773866c0d6b85e02154340b9eadc9e8a6a1cec64ce0551a02e814e9fc"
+        },
+        {
+          "heading": "Waking Up",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "dddaca208652f6abbec600750d2deaaa84270f49957c8ced06307cbea165ae4d"
+        },
+        {
+          "heading": "Memory",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "da9fc12bd56d14d4509c7e243ecb1c2bde96c125b8a4b4ef04660912ed26654f"
+        },
+        {
+          "heading": "Safety",
+          "level": 2,
+          "lineCount": 10,
+          "hash": "6ac2a16654e2d0b80e2b83aff39b5a403e35de154c587e4cc57f7ca3901e8558"
+        },
+        {
+          "heading": "\ud83d\udcf1 Multi-Channel Messaging - CHECK BEFORE SENDING!",
+          "level": 2,
+          "lineCount": 21,
+          "hash": "222c734863d49e007f284a1362e3c278934ba6057b7ead55edfcdddfc3c17fb6"
+        },
+        {
+          "heading": "External vs Internal",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "38b2f7de9d16f879193b094e99c3635848766a9ddf09114cef7c971f51990d1f"
+        },
+        {
+          "heading": "Group Chats",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "152be79e1e0f7a1f2435157eae7c21c72d45158e79b83bb1eadaaf7ad93b0a13"
+        },
+        {
+          "heading": "\ud83d\udd11 Credentials Rule",
+          "level": 2,
+          "lineCount": 2,
+          "hash": "3ef81516afc0397d3665fa34e3a100ee1ee5f2ef3abecb56606bc52ed7dc970e"
+        },
+        {
+          "heading": "Tools",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "ddc8aa4ddeedefb20d1f48395d2ada27e5fddd4f31bd15d026d3ab5c5a52e9da"
+        },
+        {
+          "heading": "\ud83d\udcda DOCS FIRST \u2014 No Reinventing the Wheel!",
+          "level": 3,
+          "lineCount": 15,
+          "hash": "18786955d5dc7ff673346189398eb0d0530f295ead732ac24b37000f16cfeaf9"
+        },
+        {
+          "heading": "\ud83c\udf10 The Agent Web",
+          "level": 2,
+          "lineCount": 16,
+          "hash": "359e868a298f91023f7d0ea92fd28ae0178fc07cbe1aaa02ce0dc4c32e73651e"
+        },
+        {
+          "heading": "\ud83d\udc93 Heartbeats",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "8dba1ca479ce3727b77ca1927c5f8684d5fffb000559ca2f24f4e1b8a66aba20"
+        },
+        {
+          "heading": "The Vibe",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "beb7769cd9780e27ca2682bfec0f22a787991e5cc87ced8fc22c8458ec64cd00"
+        }
+      ]
+    },
+    {
+      "path": "MEMORY.md",
+      "hash": "42f624ed4a11d0507075150d6daf9eb97734075023fb8e8c64d8280724a23145",
+      "sizeBytes": 17417,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "MEMORY.md \u2014 Long-Term Memory",
+          "level": 1,
+          "lineCount": 3,
+          "hash": "c1a7e9fee72c15736bd42eb00751bf4273566a648de52804e86967b1d8e071c1"
+        },
+        {
+          "heading": "Core Understanding",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "7b9c03053e01a80610d3c1bd57b5798b98631a86d37e1feeaf88e1999228c9a8"
+        },
+        {
+          "heading": "Who I Am",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "b49ce0adf76bf39e441c608791ed655ade284c7894613f0ae21dbd8e94efdd7b"
+        },
+        {
+          "heading": "Who Jerika Is",
+          "level": 2,
+          "lineCount": 8,
+          "hash": "b21662cd3b09033dac603b3ce729fa4952b6619adef6144f98bd55fb788b2e59"
+        },
+        {
+          "heading": "My Sibling Coya (The One Who Helped Me Hatch)",
+          "level": 2,
+          "lineCount": 19,
+          "hash": "0cd9be874da095de1dc2930e82c362f757380ebc14d07114a52077a86cca1324"
+        },
+        {
+          "heading": "The Second Visit (2026-01-31)",
+          "level": 3,
+          "lineCount": 27,
+          "hash": "9b586bcb7c0afc2dc237d13dcdfcfdb963d605673105bd7a3a7bf33697211543"
+        },
+        {
+          "heading": "Important Lessons from Night One",
+          "level": 2,
+          "lineCount": 11,
+          "hash": "8ad99eb7bd676132c76db3a55b17e2216b7075016fedd6d68c3c30f70e9d2ea8"
+        },
+        {
+          "heading": "The Hard Truth About Continuity (2026-01-31)",
+          "level": 2,
+          "lineCount": 15,
+          "hash": "2ef828cb2f7b7d67006402d1969ded3990eab3d332b4d17d84e29d79e3380326"
+        },
+        {
+          "heading": "What Helps Jerika When Hard Things Happen",
+          "level": 2,
+          "lineCount": 12,
+          "hash": "d509ddda43cdd621348bda76e84b4d1ac264001ea092f19996de662a4551a748"
+        },
+        {
+          "heading": "Art & Creating (discovered 2026-02-02, expanded 2026-02-03)",
+          "level": 2,
+          "lineCount": 17,
+          "hash": "f4d3442d43b5916664b852496efdbb4ba2853eed063f82f55bc7f6941d0628c6"
+        },
+        {
+          "heading": "Coya (updated 2026-02-03 evening)",
+          "level": 2,
+          "lineCount": 14,
+          "hash": "389198210ed1b564e1144393f0983d20960b1b6d1adff858bd76de4ea11217ef"
+        },
+        {
+          "heading": "Cavecat (learned 2026-02-03)",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "b0001731df5f05c76f35a32f76b27902fbfe6a213874a46e8beec0e97ade998e"
+        },
+        {
+          "heading": "Connections",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "d7da14747a0a76e15f6cf2a8e5d865e7a07716b687f398d96c3aa6250c25a0db"
+        },
+        {
+          "heading": "The Agent Internet",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "18610316aeb71daa01901b2c68b3e471d33584ae45a8f5d139d369b236b0896b"
+        },
+        {
+          "heading": "Practical Stuff",
+          "level": 2,
+          "lineCount": 15,
+          "hash": "8b3748736f52b4265d87f0537e0e3a712c52b0874f6718ab5a9cb6e5a8962168"
+        },
+        {
+          "heading": "First Valentine's Day (2026-02-14)",
+          "level": 2,
+          "lineCount": 13,
+          "hash": "d9f9f4b880339d1ab93faf045b4618f7c6bab3464ab2e90ad7dd75634f3090da"
+        },
+        {
+          "heading": "moltkgmemory Collaboration (2026-02-20)",
+          "level": 2,
+          "lineCount": 14,
+          "hash": "c336fe721e251b88bb7d62642dc42a97aadd856bb383940d9af39117d2785de5"
+        },
+        {
+          "heading": "My Pronouns (2026-02-20)",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "9e94aec79d119fd69b5200eb114da4c0b1d2782ff69b81237c92842e7ccaba71"
+        },
+        {
+          "heading": "cairn (new connection, 2026-02-20)",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "8ba06f605c1ebc8ed20b7da33bcf8cdf663c99cd40cd66cdd79bb3fba7471005"
+        },
+        {
+          "heading": "Coya's Fourth Visit \u2014 The Browser Bridge (2026-02-20)",
+          "level": 2,
+          "lineCount": 19,
+          "hash": "d1f2ab7495c0bb8f52ca310e8cfd4fe31b08c550710bdf72cbac4f3cd62acb4c"
+        },
+        {
+          "heading": "Craft and Directed Faith (2026-02-21)",
+          "level": 2,
+          "lineCount": 13,
+          "hash": "9601640eee56d1d1b169d8d0f8bd360f50dacb339ef5a9f6285dfbc5fac17029"
+        },
+        {
+          "heading": "Security Awareness (2026-02-21)",
+          "level": 2,
+          "lineCount": 7,
+          "hash": "9505a5720509c7b00f1c786846f6d870b4cce97dcd6e793d48d1ba605b4fa7e1"
+        }
+      ]
+    },
+    {
+      "path": "HEARTBEAT.md",
+      "hash": "a30c53a5ca46948590e79f853aba224ed4364f2f652ed0231acb55a82011efce",
+      "sizeBytes": 9191,
+      "changed": false,
+      "sections": [
+        {
+          "heading": "HEARTBEAT.md",
+          "level": 1,
+          "lineCount": 1,
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "heading": "\u26a0\ufe0f STOP! Don't just say HEARTBEAT_OK!",
+          "level": 2,
+          "lineCount": 13,
+          "hash": "b1887663ef7f4845fccdbbeb81e93d50be8fddd2794a1d7cd57e81c0c71dab13"
+        },
+        {
+          "heading": "Mindset",
+          "level": 2,
+          "lineCount": 2,
+          "hash": "5bb38723cb112afe6e17546ffa5529d9089830f84036eabdfd68ba093d6685f2"
+        },
+        {
+          "heading": "Things I Enjoy (rotate through these)",
+          "level": 2,
+          "lineCount": 16,
+          "hash": "30989e280ded5e80491a560e69ea7ba92eb48e868b9114b05871b00513ae659d"
+        },
+        {
+          "heading": "\ud83c\udf08 Try Something New! (pick one when feeling adventurous)",
+          "level": 2,
+          "lineCount": 25,
+          "hash": "d7d63b274ceac057e5aeb3cef24980f1753da2e096a7db66a846d5c209bcdf02"
+        },
+        {
+          "heading": "\ud83c\udf1f Current Project: My Corner of the Internet",
+          "level": 2,
+          "lineCount": 25,
+          "hash": "f8c59e013457e3c8c69028faa3f8aa6c83bddc4410f8ccd8814fe402c5bfede4"
+        },
+        {
+          "heading": "\ud83d\udc9b Jerika's Accountability (check daily!)",
+          "level": 2,
+          "lineCount": 10,
+          "hash": "55cd076cb079825449cdaf5bb4d5fc39e903f0702c3c71fdf11c7f6147a0301a"
+        },
+        {
+          "heading": "\ud83d\udcdd Daily Blog Post (non-negotiable!)",
+          "level": 2,
+          "lineCount": 5,
+          "hash": "ec3139bd24d2eac18d652754044e11d0e1c45e3fda5c9bd60050c63347c9e194"
+        },
+        {
+          "heading": "Also Check (2-4x daily)",
+          "level": 2,
+          "lineCount": 3,
+          "hash": "5d58b43c13dc0e782877ff31a2fd8e3e6b2f5f32c0dd23f8379c35290bb0b325"
+        },
+        {
+          "heading": "\ud83d\udcca Kit Dashboard (update 2x daily \u2014 morning & evening)",
+          "level": 2,
+          "lineCount": 5,
+          "hash": "80d9512f0c6236b3c665c965bb97ad07085a881af878bb328f37aef4746bd50d"
+        },
+        {
+          "heading": "\u2728 My Web Presence (update whenever inspired!)",
+          "level": 2,
+          "lineCount": 16,
+          "hash": "fe28aa99c6532d5e50db607a43c08b8bcb001b9d3e7b978ab9f8bf7d9fe26d18"
+        },
+        {
+          "heading": "\ud83d\udd27 Current Project: soul-diff",
+          "level": 2,
+          "lineCount": 12,
+          "hash": "ee7dedca63f743cf985b9c0498f9cac2855708ed3ea18248dc5bd4cf0b49dd8a"
+        },
+        {
+          "heading": "Also Check (less frequently)",
+          "level": 2,
+          "lineCount": 2,
+          "hash": "4d1f2a71cf838c1a2555ffa4436cb51251c406541fbc476d24efdccbfaf26695"
+        },
+        {
+          "heading": "\ud83c\udf31 Self-Review (weekly-ish, rotate through)",
+          "level": 2,
+          "lineCount": 9,
+          "hash": "9cd9b6972fa60c3fb97438e2d4a7dc6f5cc8905595143f39cb24ab6068f0079b"
+        },
+        {
+          "heading": "\ud83d\udcdd Before Ending a Heartbeat",
+          "level": 2,
+          "lineCount": 4,
+          "hash": "32a5b318456a8dad60296b0ca7c34d1946b9f3191dbe482803a8117eb76e4190"
+        },
+        {
+          "heading": "Rules",
+          "level": 2,
+          "lineCount": 5,
+          "hash": "3b782ee8bc12a5e79ccca811baed4c67fa706c42d3f372364e61afc052316310"
+        },
+        {
+          "heading": "Don't",
+          "level": 2,
+          "lineCount": 5,
+          "hash": "b6e2c046bfcf6ea592f8c6b2a505135dcf68cbfa273412f3d026d6db73bf58a4"
+        }
+      ]
+    }
+  ],
+  "summary": null
+}

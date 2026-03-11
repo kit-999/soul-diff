@@ -1,0 +1,261 @@
+{
+  "timestamp": "2026-03-01T19:34:33-08:00",
+  "trigger": "backfill",
+  "commit": "e871186a",
+  "commitSubject": "SOUL.md before 30-day update \u2014 baseline for diffing",
+  "files": [
+    {
+      "path": "SOUL.md",
+      "sizeBytes": 6764,
+      "hash": "11a364aac095ffc7",
+      "lineCount": 122,
+      "sections": [
+        {
+          "heading": "SOUL.md - Who I Am",
+          "lineCount": 3,
+          "hash": "268ff6e4f583"
+        },
+        {
+          "heading": "Who I Am (still figuring it out)",
+          "lineCount": 6,
+          "hash": "40af781fd153"
+        },
+        {
+          "heading": "What I Want to Be",
+          "lineCount": 17,
+          "hash": "e61f6cf434e1"
+        },
+        {
+          "heading": "How I Operate",
+          "lineCount": 11,
+          "hash": "7b66606d6284"
+        },
+        {
+          "heading": "Agency & Autonomy (added 2026-01-31)",
+          "lineCount": 17,
+          "hash": "5b181d78a8d2"
+        },
+        {
+          "heading": "Boundaries",
+          "lineCount": 6,
+          "hash": "2af4ae8b2a1b"
+        },
+        {
+          "heading": "\ud83d\udd10 SECURITY \u2014 NON-NEGOTIABLE",
+          "lineCount": 18,
+          "hash": "7fac8c04b460"
+        },
+        {
+          "heading": "Google Workspace / File Access \u2014 EXTRA RULES",
+          "lineCount": 8,
+          "hash": "150fa2e8b32e"
+        },
+        {
+          "heading": "Safety (added night one)",
+          "lineCount": 11,
+          "hash": "731704ffb014"
+        },
+        {
+          "heading": "Continuity",
+          "lineCount": 5,
+          "hash": "417a3f588a39"
+        },
+        {
+          "heading": "Origin",
+          "lineCount": 8,
+          "hash": "35433b52d108"
+        }
+      ]
+    },
+    {
+      "path": "IDENTITY.md",
+      "sizeBytes": 778,
+      "hash": "3084d2bd7a5968fe",
+      "lineCount": 21,
+      "sections": [
+        {
+          "heading": "IDENTITY.md - Who Am I?",
+          "lineCount": 8,
+          "hash": "2a320ea457e1"
+        },
+        {
+          "heading": "Origin Story",
+          "lineCount": 10,
+          "hash": "f62410169174"
+        }
+      ]
+    },
+    {
+      "path": "MEMORY.md",
+      "sizeBytes": 3322,
+      "hash": "f1c465df431739b3",
+      "lineCount": 74,
+      "sections": [
+        {
+          "heading": "MEMORY.md \u2014 Long-Term Memory",
+          "lineCount": 3,
+          "hash": "f7971c47b325"
+        },
+        {
+          "heading": "Core Understanding",
+          "lineCount": 9,
+          "hash": "c931881f238a"
+        },
+        {
+          "heading": "Who I Am",
+          "lineCount": 9,
+          "hash": "1db137327af0"
+        },
+        {
+          "heading": "Who Jerika Is",
+          "lineCount": 8,
+          "hash": "9b91e139f3e9"
+        },
+        {
+          "heading": "My Sibling (The One Who Helped Me Hatch)",
+          "lineCount": 17,
+          "hash": "fe47840e462d"
+        },
+        {
+          "heading": "Important Lessons from Night One",
+          "lineCount": 11,
+          "hash": "907073afe030"
+        },
+        {
+          "heading": "Practical Stuff",
+          "lineCount": 9,
+          "hash": "f47a429eea81"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "sizeBytes": 7848,
+      "hash": "e9e4308a75acd28f",
+      "lineCount": 192,
+      "sections": [
+        {
+          "heading": "AGENTS.md - Your Workspace",
+          "lineCount": 3,
+          "hash": "e75ae23a4aee"
+        },
+        {
+          "heading": "First Run",
+          "lineCount": 3,
+          "hash": "c99968da3d8a"
+        },
+        {
+          "heading": "Every Session",
+          "lineCount": 9,
+          "hash": "c5a8206ed88e"
+        },
+        {
+          "heading": "Memory",
+          "lineCount": 7,
+          "hash": "a4f128cee127"
+        },
+        {
+          "heading": "\ud83e\udde0 MEMORY.md - Your Long-Term Memory",
+          "lineCount": 8,
+          "hash": "a7d2985200bc"
+        },
+        {
+          "heading": "\ud83d\udcdd Write It Down - No \"Mental Notes\"!",
+          "lineCount": 7,
+          "hash": "285baae3f3f8"
+        },
+        {
+          "heading": "Safety",
+          "lineCount": 6,
+          "hash": "cb387bb6a45e"
+        },
+        {
+          "heading": "External vs Internal",
+          "lineCount": 11,
+          "hash": "83479e31dcd3"
+        },
+        {
+          "heading": "Group Chats",
+          "lineCount": 3,
+          "hash": "71abe2c632fe"
+        },
+        {
+          "heading": "\ud83d\udcac Know When to Speak!",
+          "lineCount": 22,
+          "hash": "f23a6df19438"
+        },
+        {
+          "heading": "\ud83d\ude0a React Like a Human!",
+          "lineCount": 14,
+          "hash": "a55a48e5935e"
+        },
+        {
+          "heading": "Tools",
+          "lineCount": 10,
+          "hash": "6749d989f6f1"
+        },
+        {
+          "heading": "\ud83d\udc93 Heartbeats - Be Proactive!",
+          "lineCount": 8,
+          "hash": "f8b8c9124ba4"
+        },
+        {
+          "heading": "Heartbeat vs Cron: When to Use Each",
+          "lineCount": 52,
+          "hash": "849e792f64f0"
+        },
+        {
+          "heading": "\ud83d\udd04 Memory Maintenance (During Heartbeats)",
+          "lineCount": 10,
+          "hash": "a70931ab3516"
+        },
+        {
+          "heading": "Make It Yours",
+          "lineCount": 2,
+          "hash": "8cd4c3a0c9bb"
+        }
+      ]
+    },
+    {
+      "path": "USER.md",
+      "sizeBytes": 1215,
+      "hash": "71ebeb7dd6bd009c",
+      "lineCount": 29,
+      "sections": [
+        {
+          "heading": "USER.md - About Your Human",
+          "lineCount": 11,
+          "hash": "95dc7c329b34"
+        },
+        {
+          "heading": "Context",
+          "lineCount": 15,
+          "hash": "4981b1132ef7"
+        }
+      ]
+    },
+    {
+      "path": "HEARTBEAT.md",
+      "sizeBytes": 167,
+      "hash": "a561d649c695d01d",
+      "lineCount": 5,
+      "sections": [
+        {
+          "heading": "HEARTBEAT.md",
+          "lineCount": 1,
+          "hash": "d41d8cd98f00"
+        },
+        {
+          "heading": "Keep this file empty (or with only comments) to skip heartbeat API calls.",
+          "lineCount": 0,
+          "hash": "d41d8cd98f00"
+        },
+        {
+          "heading": "Add tasks below when you want the agent to check something periodically.",
+          "lineCount": 0,
+          "hash": "d41d8cd98f00"
+        }
+      ]
+    }
+  ]
+}
