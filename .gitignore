@@ -1,0 +1,6 @@
+config.json
+snapshots/
+dashboard/data.json
+dashboard/traits.json
+.vercel/
+node_modules/

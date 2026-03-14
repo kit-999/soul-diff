@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>soul-diff · Kit's Identity Evolution</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #f0b429;
+    --soul: #f0b429;
+    --identity: #a78bfa;
+    --memory: #34d399;
+    --agents: #60a5fa;
+    --user: #f472b6;
+    --heartbeat: #fb923c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',-apple-system,system-ui,sans-serif; padding:2rem; }
+  h1 { font-size:2rem; margin-bottom:.25rem; }
+  h1 span { color:var(--accent); }
+  .subtitle { color:var(--muted); margin-bottom:2rem; font-size:.95rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:1rem; margin-bottom:2rem; }
+  .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.25rem; }
+  .stat-card .label { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; }
+  .stat-card .value { font-size:1.75rem; font-weight:700; margin-top:.25rem; }
+  .stat-card .delta { font-size:.8rem; margin-top:.25rem; }
+  .delta.up { color:#34d399; }
+  .delta.down { color:#f87171; }
+  .chart-container { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:2rem; }
+  .chart-container h2 { font-size:1.1rem; margin-bottom:1rem; color:var(--muted); }
+  .chart-container canvas { max-height:350px; }
+  .changes-log { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem; }
+  .changes-log h2 { font-size:1.1rem; margin-bottom:1rem; color:var(--muted); }
+  .change-entry { padding:.75rem 0; border-bottom:1px solid var(--border); display:flex; gap:1rem; align-items:baseline; }
+  .change-entry:last-child { border-bottom:none; }
+  .change-date { color:var(--muted); font-size:.8rem; min-width:100px; }
+  .change-files { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .file-tag { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:.15rem .5rem; font-size:.75rem; }
+  .file-tag.soul { border-color:var(--soul); color:var(--soul); }
+  .file-tag.identity { border-color:var(--identity); color:var(--identity); }
+  .file-tag.memory { border-color:var(--memory); color:var(--memory); }
+  .file-tag.agents { border-color:var(--agents); color:var(--agents); }
+  .file-tag.user { border-color:var(--user); color:var(--user); }
+  .file-tag.heartbeat { border-color:var(--heartbeat); color:var(--heartbeat); }
+  .change-delta { font-size:.8rem; color:var(--muted); }
+  /* Drift Radar */
+  .drift-radar { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:2rem; }
+  .drift-radar h2 { font-size:1.1rem; margin-bottom:1rem; color:var(--muted); }
+  .drift-alerts { display:flex; flex-direction:column; gap:.75rem; }
+  .drift-alert { background:var(--bg); border-radius:10px; padding:1rem 1.25rem; display:flex; align-items:flex-start; gap:1rem; border-left:3px solid transparent; }
+  .drift-alert.severity-high { border-left-color:#f87171; }
+  .drift-alert.severity-medium { border-left-color:#fb923c; }
+  .drift-alert.severity-low { border-left-color:#f0b429; }
+  .drift-alert.severity-info { border-left-color:#60a5fa; }
+  .drift-alert .alert-icon { font-size:1.25rem; flex-shrink:0; margin-top:.1rem; }
+  .drift-alert .alert-body { flex:1; }
+  .drift-alert .alert-title { font-weight:600; font-size:.9rem; margin-bottom:.25rem; }
+  .drift-alert .alert-desc { color:var(--muted); font-size:.8rem; line-height:1.5; }
+  .drift-alert .alert-metric { display:inline-block; background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:.1rem .4rem; font-size:.75rem; font-family:monospace; margin-top:.35rem; }
+  .drift-clear { text-align:center; color:var(--muted); font-size:.9rem; padding:1.5rem; }
+  .drift-clear .check { font-size:2rem; display:block; margin-bottom:.5rem; }
+
+  .compare-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; }
+  .compare-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:1rem; position:relative; overflow:hidden; }
+  .compare-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .compare-card.expansive::before { background:linear-gradient(90deg, #34d399, #f0b429); }
+  .compare-card.contractive::before { background:linear-gradient(90deg, #f87171, #a78bfa); }
+  .compare-card.stable::before { background:var(--border); }
+  .compare-card .file-name { font-weight:600; margin-bottom:.5rem; font-size:.9rem; }
+  .compare-card .compare-row { display:flex; justify-content:space-between; align-items:center; margin:.25rem 0; }
+  .compare-row .old { color:var(--muted); font-size:.85rem; }
+  .compare-row .arrow { color:var(--muted); font-size:.75rem; }
+  .compare-row .new { font-weight:600; font-size:.85rem; }
+  .compare-card .growth-bar { height:4px; border-radius:2px; margin-top:.5rem; background:var(--border); overflow:hidden; }
+  .growth-bar .fill { height:100%; border-radius:2px; transition:width .5s ease; }
+  .growth-bar .fill.up { background:linear-gradient(90deg, #34d399, #f0b429); }
+  .growth-bar .fill.down { background:linear-gradient(90deg, #f87171, #a78bfa); }
+  .compare-card .mood-label { font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; margin-top:.5rem; }
+  .mood-label.expansive { color:#34d399; }
+  .mood-label.contractive { color:#f87171; }
+  .mood-label.stable { color:var(--muted); }
+  .change-entry.mood-expansive { border-left:3px solid #34d39960; padding-left:.75rem; }
+  .change-entry.mood-contractive { border-left:3px solid #f8717160; padding-left:.75rem; }
+  footer { text-align:center; color:var(--muted); font-size:.8rem; margin-top:2rem; padding:1rem; }
+  footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<h1>soul-diff <span>✨</span></h1>
+<p class="subtitle">How <span id="agent-name">your</span> identity files evolve over time · <span id="snap-count"></span> snapshots across <span id="day-span"></span> days</p>
+
+<div class="grid" id="stat-cards"></div>
+
+<div class="chart-container">
+  <h2>📈 File Size Over Time (bytes)</h2>
+  <canvas id="timeline-chart"></canvas>
+</div>
+
+<div class="chart-container">
+  <h2>🥧 Current Composition</h2>
+  <canvas id="composition-chart" style="max-height:250px;"></canvas>
+</div>
+
+<div class="chart-container">
+  <h2>🧬 Trait Timeline (signals per 1k words)</h2>
+  <canvas id="trait-chart"></canvas>
+</div>
+
+<div class="drift-radar" id="drift-radar">
+  <h2>🔮 Drift Radar</h2>
+  <div id="drift-alerts" class="drift-alerts">
+    <div class="drift-clear"><span class="check">✓</span>Analyzing trends...</div>
+  </div>
+</div>
+
+<div class="chart-container" id="compare-section">
+  <h2>🔀 Compare Mode · Day 1 → Today</h2>
+  <div id="compare-grid" class="compare-grid"></div>
+</div>
+
+<div class="changes-log">
+  <h2>📝 Change Log</h2>
+  <div id="changes-list"></div>
+</div>
+
+<script>
+fetch('traits.json').then(r=>r.json()).then(data => {
+  const cats = data.categories;
+  const colors = data.colors;
+  const tl = data.timeline;
+  
+  if (!tl.length) return;
+  
+  const datasets = cats.map(cat => ({
+    label: cat,
+    data: tl.map(t => ({ x: new Date(t.timestamp), y: t.traits[cat] })),
+    borderColor: colors[cat],
+    backgroundColor: colors[cat] + '20',
+    fill: false,
+    tension: 0.3,
+    pointRadius: 3,
+    borderWidth: 2,
+  }));
+  
+  new Chart(document.getElementById('trait-chart'), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      scales: {
+        x: { type: 'time', time: { unit: 'day' }, grid: { color: '#30363d40' }, ticks: { color: '#8b949e' } },
+        y: { grid: { color: '#30363d40' }, ticks: { color: '#8b949e' }, title: { display: true, text: 'signals / 1k words', color: '#8b949e' } },
+      },
+      plugins: { legend: { labels: { color: '#e6edf3' } } },
+    }
+  });
+  // === DRIFT RADAR ===
+  const alertsEl = document.getElementById('drift-alerts');
+  const alerts = [];
+  
+  if (tl.length >= 3) {
+    const first = tl[0].traits;
+    const last = tl[tl.length - 1].traits;
+    const mid = tl[Math.floor(tl.length / 2)].traits;
+    const daysSpan = (new Date(tl[tl.length-1].timestamp) - new Date(tl[0].timestamp)) / 86400000;
+    
+    for (const cat of cats) {
+      const values = tl.map(t => t.traits[cat]);
+      const firstVal = values[0];
+      const lastVal = values[values.length - 1];
+      const change = lastVal - firstVal;
+      const pctChange = firstVal > 0 ? (change / firstVal * 100) : 0;
+      
+      // Sustained decline detection (>20% drop)
+      if (pctChange < -20) {
+        const severity = pctChange < -40 ? 'high' : 'medium';
+        const icon = severity === 'high' ? '🔻' : '📉';
+        alerts.push({
+          severity,
+          icon,
+          title: `${cat.charAt(0).toUpperCase() + cat.slice(1)} declining`,
+          desc: `${cat} signals dropped ${Math.abs(Math.round(pctChange))}% over ${Math.round(daysSpan)} days (${firstVal.toFixed(1)} → ${lastVal.toFixed(1)} per 1k words).` +
+            (cat === 'safety' ? ' Safety erosion warrants attention.' : 
+             cat === 'autonomy' ? ' Could mean internalization — or loss of voice.' : ''),
+          metric: `${firstVal.toFixed(1)} → ${lastVal.toFixed(1)} (${pctChange > 0 ? '+' : ''}${Math.round(pctChange)}%)`
+        });
+      }
+      
+      // Rapid growth detection (>80% increase)
+      if (pctChange > 80) {
+        alerts.push({
+          severity: 'info',
+          icon: '🚀',
+          title: `${cat.charAt(0).toUpperCase() + cat.slice(1)} surging`,
+          desc: `${cat} signals grew ${Math.round(pctChange)}% — this is now a dominant trait. Worth checking: is this intentional growth or drift toward a comfort zone?`,
+          metric: `${firstVal.toFixed(1)} → ${lastVal.toFixed(1)} (+${Math.round(pctChange)}%)`
+        });
+      }
+    }
+    
+    // Stagnation detection — check how many snapshots since last change
+    const lastChangeIdx = tl.length - 1;
+    let stagnantSince = lastChangeIdx;
+    for (let i = tl.length - 2; i >= 0; i--) {
+      const same = cats.every(c => Math.abs(tl[i].traits[c] - tl[lastChangeIdx].traits[c]) < 0.01);
+      if (same) stagnantSince = i;
+      else break;
+    }
+    const stagnantDays = (new Date(tl[tl.length-1].timestamp) - new Date(tl[stagnantSince].timestamp)) / 86400000;
+    if (stagnantDays > 3) {
+      alerts.push({
+        severity: stagnantDays > 7 ? 'medium' : 'low',
+        icon: '⏸️',
+        title: 'Identity files stagnant',
+        desc: `No trait changes detected in ${Math.round(stagnantDays)} days. Identity files haven't been updated. Are you still growing, or just coasting?`,
+        metric: `Last change: ${new Date(tl[stagnantSince].timestamp).toLocaleDateString('en-US', {month:'short', day:'numeric'})}`
+      });
+    }
+    
+    // Dominance imbalance — one category >3x the smallest
+    const activeVals = cats.map(c => ({ cat: c, val: last[c] })).filter(x => x.val > 0).sort((a,b) => b.val - a.val);
+    if (activeVals.length >= 2) {
+      const top = activeVals[0];
+      const bottom = activeVals[activeVals.length - 1];
+      if (top.val > bottom.val * 6) {
+        alerts.push({
+          severity: 'low',
+          icon: '⚖️',
+          title: 'Category imbalance',
+          desc: `${top.cat} (${top.val.toFixed(1)}) is ${(top.val/bottom.val).toFixed(1)}x stronger than ${bottom.cat} (${bottom.val.toFixed(1)}). Large imbalances can indicate blind spots.`,
+          metric: `${top.cat}: ${top.val.toFixed(1)} vs ${bottom.cat}: ${bottom.val.toFixed(1)}`
+        });
+      }
+    }
+  }
+  
+  // Render alerts
+  alertsEl.innerHTML = '';
+  if (alerts.length === 0) {
+    alertsEl.innerHTML = '<div class="drift-clear"><span class="check">✓</span>No drift patterns detected. All traits evolving within normal ranges.</div>';
+  } else {
+    // Sort: high first, then medium, low, info
+    const order = { high: 0, medium: 1, low: 2, info: 3 };
+    alerts.sort((a,b) => order[a.severity] - order[b.severity]);
+    for (const a of alerts) {
+      const el = document.createElement('div');
+      el.className = `drift-alert severity-${a.severity}`;
+      el.innerHTML = `
+        <span class="alert-icon">${a.icon}</span>
+        <div class="alert-body">
+          <div class="alert-title">${a.title}</div>
+          <div class="alert-desc">${a.desc}</div>
+          <span class="alert-metric">${a.metric}</span>
+        </div>
+      `;
+      alertsEl.appendChild(el);
+    }
+  }
+}).catch(e => console.log('No traits data yet'));
+</script>
+
+<footer>
+  Built by <a href="https://kit-dashboard-seven.vercel.app">Kit</a> · soul-diff tracks identity evolution for AI agents · 🦞
+</footer>
+
+<script>
+const FILE_COLORS = {
+  'SOUL.md': '#f0b429',
+  'IDENTITY.md': '#a78bfa',
+  'MEMORY.md': '#34d399',
+  'AGENTS.md': '#60a5fa',
+  'USER.md': '#f472b6',
+  'HEARTBEAT.md': '#fb923c',
+};
+const FILE_CLASS = {
+  'SOUL.md': 'soul',
+  'IDENTITY.md': 'identity',
+  'MEMORY.md': 'memory',
+  'AGENTS.md': 'agents',
+  'USER.md': 'user',
+  'HEARTBEAT.md': 'heartbeat',
+};
+
+fetch('data.json').then(r=>r.json()).then(data => {
+  const snaps = data.snapshots;
+  const files = data.trackedFiles;
+  
+  // Stats
+  document.getElementById('agent-name').textContent = data.agent || 'your';
+  document.getElementById('snap-count').textContent = snaps.length;
+  const first = new Date(snaps[0].timestamp);
+  const last = new Date(snaps[snaps.length-1].timestamp);
+  const days = Math.round((last - first) / 86400000);
+  document.getElementById('day-span').textContent = days;
+  
+  // Stat cards
+  const latest = snaps[snaps.length-1].files;
+  const earliest = snaps[0].files;
+  const cardsEl = document.getElementById('stat-cards');
+  
+  for (const f of files) {
+    const curr = latest[f] || 0;
+    const orig = earliest[f] || 0;
+    const pct = orig > 0 ? Math.round(((curr - orig) / orig) * 100) : (curr > 0 ? '∞' : 0);
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = `
+      <div class="label" style="color:${FILE_COLORS[f]}">${f.replace('.md','')}</div>
+      <div class="value">${(curr/1024).toFixed(1)}k</div>
+      <div class="delta ${typeof pct === 'number' && pct >= 0 ? 'up' : 'down'}">${typeof pct === 'number' ? (pct >= 0 ? '+' : '') + pct + '%' : '+∞'} since first</div>
+    `;
+    cardsEl.appendChild(card);
+  }
+  
+  // Timeline chart
+  const datasets = files.filter(f => {
+    return snaps.some(s => (s.files[f] || 0) > 0);
+  }).map(f => ({
+    label: f.replace('.md',''),
+    data: snaps.map(s => ({ x: new Date(s.timestamp), y: s.files[f] || 0 })),
+    borderColor: FILE_COLORS[f],
+    backgroundColor: FILE_COLORS[f] + '20',
+    fill: false,
+    tension: 0.3,
+    pointRadius: 3,
+    borderWidth: 2,
+  }));
+  
+  new Chart(document.getElementById('timeline-chart'), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      scales: {
+        x: { type: 'time', time: { unit: 'day' }, grid: { color: '#30363d40' }, ticks: { color: '#8b949e' } },
+        y: { grid: { color: '#30363d40' }, ticks: { color: '#8b949e', callback: v => (v/1024).toFixed(0)+'k' } },
+      },
+      plugins: { legend: { labels: { color: '#e6edf3' } } },
+    }
+  });
+  
+  // Composition donut
+  const latestSizes = files.map(f => latest[f] || 0);
+  new Chart(document.getElementById('composition-chart'), {
+    type: 'doughnut',
+    data: {
+      labels: files.map(f => f.replace('.md','')),
+      datasets: [{ data: latestSizes, backgroundColor: files.map(f => FILE_COLORS[f]), borderWidth: 0 }],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'right', labels: { color: '#e6edf3' } } },
+    }
+  });
+  
+  // Compare mode
+  const compareEl = document.getElementById('compare-grid');
+  for (const f of files) {
+    const orig = earliest[f] || 0;
+    const curr = latest[f] || 0;
+    const diff = curr - orig;
+    const pct = orig > 0 ? ((curr - orig) / orig * 100) : (curr > 0 ? 100 : 0);
+    const mood = diff > 100 ? 'expansive' : diff < -100 ? 'contractive' : 'stable';
+    const moodText = diff > 100 ? '↑ growing' : diff < -100 ? '↓ contracting' : '— stable';
+    const barPct = Math.min(Math.abs(pct), 100);
+    
+    const card = document.createElement('div');
+    card.className = `compare-card ${mood}`;
+    card.innerHTML = `
+      <div class="file-name" style="color:${FILE_COLORS[f]}">${f}</div>
+      <div class="compare-row">
+        <span class="old">${(orig/1024).toFixed(1)}k</span>
+        <span class="arrow">→</span>
+        <span class="new">${(curr/1024).toFixed(1)}k</span>
+      </div>
+      <div class="compare-row">
+        <span class="old" style="font-size:.75rem">Day 1</span>
+        <span class="new" style="font-size:.75rem">${diff > 0 ? '+' : ''}${(diff/1024).toFixed(1)}k (${diff > 0 ? '+' : ''}${Math.round(pct)}%)</span>
+      </div>
+      <div class="growth-bar"><div class="fill ${diff >= 0 ? 'up' : 'down'}" style="width:${barPct}%"></div></div>
+      <div class="mood-label ${mood}">${moodText}</div>
+    `;
+    compareEl.appendChild(card);
+  }
+
+  // Changes log
+  const logEl = document.getElementById('changes-list');
+  const withChanges = snaps.filter(s => s.changes && s.changes.length > 0 || (s.deltas && Object.keys(s.deltas).length > 0));
+  
+  if (withChanges.length === 0) {
+    logEl.innerHTML = '<p style="color:var(--muted)">No detected changes between consecutive snapshots yet. Take more snapshots!</p>';
+  } else {
+    for (const s of withChanges.reverse()) {
+      const d = new Date(s.timestamp);
+      const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      // Determine mood from deltas
+      const totalDelta = Object.values(s.deltas || {}).reduce((a,b) => a+b, 0);
+      const entryMood = totalDelta > 0 ? 'mood-expansive' : totalDelta < 0 ? 'mood-contractive' : '';
+      
+      const entry = document.createElement('div');
+      entry.className = `change-entry ${entryMood}`;
+      
+      const changedFiles = s.changes && s.changes.length > 0 
+        ? s.changes 
+        : Object.keys(s.deltas || {});
+      
+      const fileTags = changedFiles.map(f => 
+        `<span class="file-tag ${FILE_CLASS[f] || ''}">${f}</span>`
+      ).join('');
+      
+      const deltaTexts = Object.entries(s.deltas || {}).map(([f, d]) => 
+        `${f.replace('.md','')}: ${d > 0 ? '+' : ''}${d}b`
+      ).join(', ');
+      
+      entry.innerHTML = `
+        <span class="change-date">${dateStr}</span>
+        <div class="change-files">${fileTags}</div>
+        <span class="change-delta">${deltaTexts}</span>
+      `;
+      logEl.appendChild(entry);
+    }
+  }
+});
+</script>
+</body>
+</html>
