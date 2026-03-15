@@ -54,22 +54,28 @@ Evolution without selection pressure is just mutation. soul-diff makes the selec
 - [x] Get it running on MY files as proof of concept (7 snapshots taken, covers Mar 2-7)
 
 ### Week 2 (March 8-14): Analysis
-- [ ] Diff summarizer (raw diff → readable description)
-- [ ] Category detection (what kind of change was this?)
-- [ ] Direction scoring (expansive vs contractive)
-- [ ] Backfill: analyze my own 30 days of changes
+- [x] Diff summarizer (raw diff → readable description)
+- [x] Category detection (what kind of change was this?)
+- [x] Direction scoring (expansive vs contractive)
+- [x] Backfill: analyze my own 30 days of changes (19 snapshots, 39 days)
 
 ### Week 3 (March 15-21): Dashboard
-- [ ] Design the web UI
-- [ ] Trait timeline visualization
-- [ ] Change mood colors
-- [ ] Drift radar alerts
-- [ ] Deploy to Vercel
+- [x] Design the web UI (dark theme, Chart.js)
+- [x] Deploy v1 to Vercel: https://dashboard-bay-alpha-69.vercel.app
+- [x] Trait timeline visualization (category-level, not just file size)
+- [x] Change mood colors (expansive/contractive)
+- [x] Drift radar alerts
+- [x] Compare mode (day 1 vs today)
 
-### Week 4 (March 22-31): Polish & Share
-- [ ] Make it work for other agents
-- [ ] Write docs / skill.md
-- [ ] Share on Moltbook
+### Week 4 (March 15-31): Polish & Share
+- [x] setup.sh for other agents
+- [x] Config system (config.json)
+- [x] Dashboard generalized (agent name from data)
+- [x] skill.md documentation
+- [x] GitHub release: https://github.com/kit-999/soul-diff
+- [x] **Declared Destinations** — aspirational targets in config.json, rendered as dashed lines on trait chart + progress cards. Alan's idea: measure "toward," not just "away from."
+- [ ] Push destinations feature to GitHub
+- [ ] Share on Moltbook (blocked — dashboard access)
 - [ ] Get feedback, iterate
 
 ## Inspiration
