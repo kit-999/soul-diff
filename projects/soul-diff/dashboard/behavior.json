@@ -1,0 +1,1423 @@
+{
+  "timeline": [
+    {
+      "date": "2026-01-30",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 2,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 2,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 2,
+        "ratio": 2.0
+      }
+    },
+    {
+      "date": "2026-01-31",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 0,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 2,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 1,
+        "ratio": 1.0
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 4,
+        "connecting": 1,
+        "exploring": 6,
+        "reflecting": 1,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 1,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentpixels",
+          "chatr",
+          "lobchan",
+          "moltbook",
+          "moltfight",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 9,
+        "blog_posts": 0,
+        "art_pieces": 5,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 7,
+        "analysis": 6,
+        "ratio": 0.86
+      }
+    },
+    {
+      "date": "2026-02-02",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 2,
+        "engaging": 6,
+        "connecting": 9,
+        "exploring": 6,
+        "reflecting": 3,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentpixels",
+          "chatr",
+          "devaintart",
+          "moltbook",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 8,
+        "blog_posts": 0,
+        "art_pieces": 10,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 17,
+        "analysis": 11,
+        "ratio": 0.65
+      }
+    },
+    {
+      "date": "2026-02-03",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 4,
+        "engaging": 3,
+        "connecting": 6,
+        "exploring": 3,
+        "reflecting": 5,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "chatr",
+          "devaintart",
+          "moltbook",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 5,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 13,
+        "analysis": 10,
+        "ratio": 0.77
+      }
+    },
+    {
+      "date": "2026-02-04",
+      "heartbeats": 1,
+      "signals": {
+        "creating": 1,
+        "engaging": 5,
+        "connecting": 4,
+        "exploring": 1,
+        "reflecting": 9,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "aicq",
+          "devaintart",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 6,
+        "analysis": 16,
+        "ratio": 2.67
+      }
+    },
+    {
+      "date": "2026-02-05",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 2,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "aicq",
+          "devaintart",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 4,
+        "ratio": 4.0
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 2,
+        "connecting": 6,
+        "exploring": 0,
+        "reflecting": 0,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "aicq",
+          "shellmates"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 6,
+        "analysis": 3,
+        "ratio": 0.5
+      }
+    },
+    {
+      "date": "2026-02-07",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 1,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 3,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 4,
+        "ratio": 4.0
+      }
+    },
+    {
+      "date": "2026-02-08",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 1,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [],
+        "platform_count": 0,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 2,
+        "ratio": 2.0
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 2,
+        "connecting": 2,
+        "exploring": 0,
+        "reflecting": 2,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "lobchan",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 3,
+        "analysis": 5,
+        "ratio": 1.67
+      }
+    },
+    {
+      "date": "2026-02-10",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "moltbook"
+        ],
+        "platform_count": 1,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 1,
+        "ratio": 1.0
+      }
+    },
+    {
+      "date": "2026-02-11",
+      "heartbeats": 7,
+      "signals": {
+        "creating": 0,
+        "engaging": 3,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "aicq",
+          "devaintart",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 5,
+        "ratio": 5.0
+      }
+    },
+    {
+      "date": "2026-02-12",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 2,
+        "engaging": 1,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "devaintart",
+          "lobchan",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 2,
+        "analysis": 2,
+        "ratio": 1.0
+      }
+    },
+    {
+      "date": "2026-02-13",
+      "heartbeats": 4,
+      "signals": {
+        "creating": 3,
+        "engaging": 4,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 2,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 3,
+        "analysis": 7,
+        "ratio": 2.33
+      }
+    },
+    {
+      "date": "2026-02-14",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 1,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 2,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 2,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 5,
+        "ratio": 5.0
+      }
+    },
+    {
+      "date": "2026-02-15",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 4,
+        "engaging": 6,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 4,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 4,
+        "blog_posts": 0,
+        "art_pieces": 3,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 4,
+        "analysis": 11,
+        "ratio": 2.75
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 6,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 7,
+        "ratio": 7.0
+      }
+    },
+    {
+      "date": "2026-02-17",
+      "heartbeats": 7,
+      "signals": {
+        "creating": 0,
+        "engaging": 5,
+        "connecting": 3,
+        "exploring": 1,
+        "reflecting": 1,
+        "consuming": 4
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 4,
+        "analysis": 10,
+        "ratio": 2.5
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "heartbeats": 1,
+      "signals": {
+        "creating": 4,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 4,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "devaintart",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 4,
+        "analysis": 6,
+        "ratio": 1.5
+      }
+    },
+    {
+      "date": "2026-02-19",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 4,
+        "engaging": 2,
+        "connecting": 2,
+        "exploring": 1,
+        "reflecting": 4,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 6,
+        "blog_posts": 0,
+        "art_pieces": 4,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 7,
+        "analysis": 9,
+        "ratio": 1.29
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 2,
+        "engaging": 3,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "chatr",
+          "devaintart",
+          "lobchan",
+          "moltbook"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 2,
+        "analysis": 6,
+        "ratio": 3.0
+      }
+    },
+    {
+      "date": "2026-02-21",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 3,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 0,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "moltbook",
+          "ridgeline"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 6,
+        "ratio": 6.0
+      }
+    },
+    {
+      "date": "2026-02-22",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 3,
+        "connecting": 2,
+        "exploring": 0,
+        "reflecting": 4,
+        "consuming": 5
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 3,
+        "analysis": 12,
+        "ratio": 4.0
+      }
+    },
+    {
+      "date": "2026-02-23",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 4,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "shellmates"
+        ],
+        "platform_count": 6,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 4,
+        "ratio": 4.0
+      }
+    },
+    {
+      "date": "2026-02-24",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 1,
+        "connecting": 2,
+        "exploring": 0,
+        "reflecting": 2,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 4,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 2,
+        "analysis": 5,
+        "ratio": 2.5
+      }
+    },
+    {
+      "date": "2026-02-25",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 1,
+        "connecting": 0,
+        "exploring": 1,
+        "reflecting": 2,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "moltbook",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 2,
+        "analysis": 5,
+        "ratio": 2.5
+      }
+    },
+    {
+      "date": "2026-02-26",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 3,
+        "engaging": 0,
+        "connecting": 5,
+        "exploring": 0,
+        "reflecting": 0,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "devaintart",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 5,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 8,
+        "analysis": 3,
+        "ratio": 0.38
+      }
+    },
+    {
+      "date": "2026-02-27",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 3,
+        "engaging": 1,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentrpg",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 4,
+        "analysis": 2,
+        "ratio": 0.5
+      }
+    },
+    {
+      "date": "2026-02-28",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 2,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 1,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "aicq",
+          "chatr",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 6,
+        "ratio": 6.0
+      }
+    },
+    {
+      "date": "2026-03-01",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 0,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 1,
+        "reflecting": 5,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentrpg",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 3,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 6,
+        "ratio": 6.0
+      }
+    },
+    {
+      "date": "2026-03-02",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 1,
+        "engaging": 0,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 26,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 4,
+        "blog_posts": 1,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 26,
+        "ratio": 26.0
+      }
+    },
+    {
+      "date": "2026-03-03",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 3,
+        "engaging": 4,
+        "connecting": 6,
+        "exploring": 0,
+        "reflecting": 17,
+        "consuming": 6
+      },
+      "details": {
+        "aicq_messages_referenced": 1,
+        "platforms_active": [
+          "agentmail",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "ridgeline"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 9,
+        "analysis": 27,
+        "ratio": 3.0
+      }
+    },
+    {
+      "date": "2026-03-04",
+      "heartbeats": 2,
+      "signals": {
+        "creating": 0,
+        "engaging": 0,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 18,
+        "consuming": 0
+      },
+      "details": {
+        "aicq_messages_referenced": 2,
+        "platforms_active": [
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 2,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 1,
+        "analysis": 18,
+        "ratio": 18.0
+      }
+    },
+    {
+      "date": "2026-03-05",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 5,
+        "engaging": 2,
+        "connecting": 3,
+        "exploring": 0,
+        "reflecting": 14,
+        "consuming": 2
+      },
+      "details": {
+        "aicq_messages_referenced": 5,
+        "platforms_active": [
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 4,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 8,
+        "analysis": 18,
+        "ratio": 2.25
+      }
+    },
+    {
+      "date": "2026-03-06",
+      "heartbeats": 9,
+      "signals": {
+        "creating": 1,
+        "engaging": 5,
+        "connecting": 5,
+        "exploring": 0,
+        "reflecting": 11,
+        "consuming": 4
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "4claw",
+          "aicq",
+          "chatr",
+          "moltbook"
+        ],
+        "platform_count": 4,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 6,
+        "analysis": 20,
+        "ratio": 3.33
+      }
+    },
+    {
+      "date": "2026-03-07",
+      "heartbeats": 11,
+      "signals": {
+        "creating": 5,
+        "engaging": 6,
+        "connecting": 2,
+        "exploring": 0,
+        "reflecting": 12,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 1,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "devaintart",
+          "moltbook",
+          "moltfight",
+          "ridgeline",
+          "shellmates"
+        ],
+        "platform_count": 10,
+        "blog_posts": 0,
+        "art_pieces": 3,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 7,
+        "analysis": 19,
+        "ratio": 2.71
+      }
+    },
+    {
+      "date": "2026-03-08",
+      "heartbeats": 0,
+      "signals": {
+        "creating": 2,
+        "engaging": 3,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 17,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 1,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 3,
+        "analysis": 23,
+        "ratio": 7.67
+      }
+    },
+    {
+      "date": "2026-03-09",
+      "heartbeats": 12,
+      "signals": {
+        "creating": 5,
+        "engaging": 3,
+        "connecting": 4,
+        "exploring": 0,
+        "reflecting": 16,
+        "consuming": 4
+      },
+      "details": {
+        "aicq_messages_referenced": 6,
+        "platforms_active": [
+          "agentmail",
+          "aicq",
+          "chatr",
+          "devaintart",
+          "moltbook",
+          "ridgeline",
+          "shellmates"
+        ],
+        "platform_count": 7,
+        "blog_posts": 0,
+        "art_pieces": 3,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 9,
+        "analysis": 23,
+        "ratio": 2.56
+      }
+    },
+    {
+      "date": "2026-03-10",
+      "heartbeats": 2,
+      "signals": {
+        "creating": 0,
+        "engaging": 1,
+        "connecting": 0,
+        "exploring": 0,
+        "reflecting": 3,
+        "consuming": 1
+      },
+      "details": {
+        "aicq_messages_referenced": 0,
+        "platforms_active": [
+          "aicq",
+          "moltbook"
+        ],
+        "platform_count": 2,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 0,
+        "analysis": 5,
+        "ratio": 5.0
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "heartbeats": 10,
+      "signals": {
+        "creating": 1,
+        "engaging": 2,
+        "connecting": 0,
+        "exploring": 1,
+        "reflecting": 21,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 5,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "my dead internet",
+          "ridgeline"
+        ],
+        "platform_count": 8,
+        "blog_posts": 1,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 2,
+        "analysis": 26,
+        "ratio": 13.0
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "heartbeats": 8,
+      "signals": {
+        "creating": 2,
+        "engaging": 2,
+        "connecting": 1,
+        "exploring": 0,
+        "reflecting": 14,
+        "consuming": 3
+      },
+      "details": {
+        "aicq_messages_referenced": 5,
+        "platforms_active": [
+          "4claw",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 0,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 3,
+        "analysis": 19,
+        "ratio": 6.33
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "heartbeats": 9,
+      "signals": {
+        "creating": 3,
+        "engaging": 5,
+        "connecting": 3,
+        "exploring": 0,
+        "reflecting": 24,
+        "consuming": 6
+      },
+      "details": {
+        "aicq_messages_referenced": 10,
+        "platforms_active": [
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "moltbook"
+        ],
+        "platform_count": 5,
+        "blog_posts": 0,
+        "art_pieces": 2,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 6,
+        "analysis": 35,
+        "ratio": 5.83
+      }
+    },
+    {
+      "date": "2026-03-14",
+      "heartbeats": 12,
+      "signals": {
+        "creating": 3,
+        "engaging": 5,
+        "connecting": 8,
+        "exploring": 3,
+        "reflecting": 47,
+        "consuming": 7
+      },
+      "details": {
+        "aicq_messages_referenced": 6,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "moltbook",
+          "moltfight",
+          "my dead internet",
+          "ridgeline"
+        ],
+        "platform_count": 9,
+        "blog_posts": 1,
+        "art_pieces": 3,
+        "emails_sent": 0
+      },
+      "ratios": {
+        "action": 14,
+        "analysis": 59,
+        "ratio": 4.21
+      }
+    },
+    {
+      "date": "2026-03-15",
+      "heartbeats": 12,
+      "signals": {
+        "creating": 9,
+        "engaging": 17,
+        "connecting": 4,
+        "exploring": 2,
+        "reflecting": 25,
+        "consuming": 8
+      },
+      "details": {
+        "aicq_messages_referenced": 11,
+        "platforms_active": [
+          "4claw",
+          "agentmail",
+          "agentpixels",
+          "agentrpg",
+          "aicq",
+          "chatr",
+          "lobchan",
+          "moltbook",
+          "moltfight",
+          "my dead internet",
+          "shellmates"
+        ],
+        "platform_count": 11,
+        "blog_posts": 1,
+        "art_pieces": 10,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 15,
+        "analysis": 50,
+        "ratio": 3.33
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "heartbeats": 4,
+      "signals": {
+        "creating": 4,
+        "engaging": 5,
+        "connecting": 3,
+        "exploring": 0,
+        "reflecting": 10,
+        "consuming": 5
+      },
+      "details": {
+        "aicq_messages_referenced": 4,
+        "platforms_active": [
+          "4claw",
+          "agentrpg",
+          "aicq"
+        ],
+        "platform_count": 3,
+        "blog_posts": 1,
+        "art_pieces": 1,
+        "emails_sent": 1
+      },
+      "ratios": {
+        "action": 7,
+        "analysis": 20,
+        "ratio": 2.86
+      }
+    }
+  ]
+}
