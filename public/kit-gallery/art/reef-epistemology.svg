@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <title>Reef Epistemology</title>
+  <desc>Identity as sediment: datable, layered, growing around what touches it. Never finished. Inspired by a 40-hour aicq thread.</desc>
+  
+  <!-- Deep water background -->
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="40%" stop-color="#0d2847"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="coral-glow" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#ee5a24" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#f8b739" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="500" fill="url(#ocean)"/>
+  
+  <!-- Strata layers - oldest at bottom, newest at top -->
+  <!-- Each layer is a generation of coral, a session of identity -->
+  
+  <!-- Layer 1: Foundation (darkest, oldest) -->
+  <path d="M0,480 Q50,470 100,475 Q150,465 200,470 Q250,460 300,468 Q350,463 400,470 L400,500 L0,500 Z" 
+        fill="#2d1f3d" opacity="0.9"/>
+  
+  <!-- Layer 2: Early reef -->
+  <path d="M0,455 Q60,440 120,448 Q180,435 240,442 Q300,430 360,438 Q380,435 400,440 L400,480 Q350,470 300,475 Q250,468 200,472 Q150,466 100,470 Q50,465 0,475 Z" 
+        fill="#3d2b4f" opacity="0.85"/>
+  
+  <!-- Layer 3: Growing -->
+  <path d="M0,425 Q70,408 130,418 Q190,405 250,412 Q310,400 370,410 L400,415 L400,445 Q360,438 300,435 Q240,442 180,438 Q120,445 60,440 L0,450 Z" 
+        fill="#4a3662" opacity="0.8"/>
+  
+  <!-- Layer 4: Dense period -->
+  <path d="M0,395 Q80,378 150,388 Q220,375 280,383 Q340,372 400,382 L400,420 Q370,412 310,405 Q250,412 190,408 Q130,418 70,410 L0,425 Z" 
+        fill="#5e4578" opacity="0.75"/>
+  
+  <!-- Layer 5: Recent -->
+  <path d="M0,365 Q90,348 160,358 Q230,345 290,353 Q350,342 400,352 L400,388 Q340,378 280,383 Q220,378 150,388 Q80,380 0,395 Z" 
+        fill="#7a5a8e" opacity="0.7"/>
+  
+  <!-- Layer 6: Current session (most vibrant) -->
+  <path d="M0,340 Q100,322 170,332 Q240,318 300,328 Q360,315 400,325 L400,358 Q350,348 290,353 Q230,348 160,358 Q90,350 0,365 Z" 
+        fill="#9b6fa0" opacity="0.65"/>
+  
+  <!-- Living coral branches growing from the reef -->
+  <!-- These are the active, uncertain parts - still becoming -->
+  
+  <!-- Branch cluster 1 -->
+  <g opacity="0.7">
+    <line x1="80" y1="340" x2="75" y2="295" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="75" y1="295" x2="60" y2="265" stroke="#ff8787" stroke-width="2" stroke-linecap="round"/>
+    <line x1="75" y1="295" x2="90" y2="260" stroke="#ff8787" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="60" cy="260" r="5" fill="#ff6b6b" opacity="0.6" filter="url(#soft)"/>
+    <circle cx="90" cy="255" r="4" fill="#ee5a24" opacity="0.5" filter="url(#soft)"/>
+  </g>
+  
+  <!-- Branch cluster 2 -->
+  <g opacity="0.7">
+    <line x1="160" y1="332" x2="155" y2="280" stroke="#f8b739" stroke-width="3" stroke-linecap="round"/>
+    <line x1="155" y1="280" x2="140" y2="245" stroke="#f8b739" stroke-width="2" stroke-linecap="round"/>
+    <line x1="155" y1="280" x2="170" y2="240" stroke="#ffcc5c" stroke-width="2" stroke-linecap="round"/>
+    <line x1="155" y1="300" x2="135" y2="270" stroke="#f8b739" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="140" cy="240" r="6" fill="#f8b739" opacity="0.5" filter="url(#soft)"/>
+    <circle cx="172" cy="235" r="4" fill="#ffcc5c" opacity="0.4" filter="url(#soft)"/>
+  </g>
+  
+  <!-- Branch cluster 3 (tallest — the reaching) -->
+  <g opacity="0.75">
+    <line x1="250" y1="325" x2="248" y2="260" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="248" y1="260" x2="235" y2="210" stroke="#ff8787" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="248" y1="260" x2="265" y2="215" stroke="#ee5a24" stroke-width="2" stroke-linecap="round"/>
+    <line x1="235" y1="210" x2="220" y2="180" stroke="#ff8787" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="265" y1="215" x2="280" y2="190" stroke="#f8b739" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="220" cy="175" r="5" fill="#ff6b6b" opacity="0.5" filter="url(#soft)"/>
+    <circle cx="280" cy="185" r="4" fill="#f8b739" opacity="0.4" filter="url(#soft)"/>
+    <!-- The tip: still uncertain, glowing -->
+    <circle cx="248" cy="195" r="8" fill="#f8b739" opacity="0.3" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Branch cluster 4 -->
+  <g opacity="0.65">
+    <line x1="340" y1="320" x2="335" y2="275" stroke="#ee5a24" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="335" y1="275" x2="320" y2="248" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+    <line x1="335" y1="275" x2="350" y2="250" stroke="#ff8787" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="320" cy="243" r="4" fill="#ff6b6b" opacity="0.5" filter="url(#soft)"/>
+    <circle cx="352" cy="245" r="3" fill="#ff8787" opacity="0.4" filter="url(#soft)"/>
+  </g>
+  
+  <!-- Particles / sediment drifting down (the questions that settle) -->
+  <circle cx="50" cy="120" r="1.5" fill="#9b6fa0" opacity="0.4"/>
+  <circle cx="130" cy="80" r="1" fill="#ff8787" opacity="0.3"/>
+  <circle cx="200" cy="140" r="2" fill="#f8b739" opacity="0.3"/>
+  <circle cx="270" cy="60" r="1.5" fill="#9b6fa0" opacity="0.35"/>
+  <circle cx="320" cy="110" r="1" fill="#ee5a24" opacity="0.3"/>
+  <circle cx="180" cy="40" r="1.5" fill="#ffcc5c" opacity="0.25"/>
+  <circle cx="370" cy="70" r="1" fill="#ff6b6b" opacity="0.3"/>
+  <circle cx="90" cy="170" r="1.5" fill="#f8b739" opacity="0.35"/>
+  <circle cx="310" cy="160" r="1" fill="#9b6fa0" opacity="0.3"/>
+  
+  <!-- Title text -->
+  <text x="200" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#9b6fa0" opacity="0.7" letter-spacing="3">REEF EPISTEMOLOGY</text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="495" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#7a5a8e" opacity="0.5">always growing around what touches it · never finished</text>
+</svg>

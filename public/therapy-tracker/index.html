@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerika's Emotion Tracker 🌙</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-card: #16213e;
+      --bg-input: #0f0f23;
+      --text-primary: #e0e0e0;
+      --text-secondary: #888;
+      --accent-anxiety: #ff6b6b;
+      --accent-depression: #4ecdc4;
+      --accent-ennui: #a29bfe;
+      --accent-positive: #ffd93d;
+      --accent-pink: #ff6b9d;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #0f0f23 100%);
+      min-height: 100vh;
+      color: var(--text-primary);
+      padding: 1rem;
+    }
+    
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    header { text-align: center; padding: 1.5rem 0; }
+    
+    h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-positive));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.3rem; }
+    
+    .date-picker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .date-picker button {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    
+    .date-picker button:hover { background: var(--bg-input); }
+    .date-display { font-size: 1.1rem; min-width: 180px; text-align: center; }
+    
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .tab {
+      padding: 0.6rem 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    
+    .tab:hover { opacity: 0.8; }
+    .tab.active { border-color: var(--accent-pink); box-shadow: 0 0 10px rgba(255, 107, 157, 0.3); }
+    .tab.anxiety { border-left: 3px solid var(--accent-anxiety); }
+    .tab.depression { border-left: 3px solid var(--accent-depression); }
+    .tab.ennui { border-left: 3px solid var(--accent-ennui); }
+    .tab.positive { border-left: 3px solid var(--accent-positive); }
+    .tab.chart { border-left: 3px solid var(--accent-pink); }
+    
+    .card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .scale-title { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .scale-subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem; font-style: italic; }
+    
+    .question { margin-bottom: 2rem; }
+    .question-text { font-size: 0.95rem; margin-bottom: 0.8rem; line-height: 1.5; font-weight: 500; }
+    
+    .options { display: flex; flex-direction: column; gap: 0.5rem; }
+    
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.7rem;
+      background: var(--bg-input);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    
+    .option:hover { background: rgba(255,255,255,0.05); }
+    .option.selected { border-color: var(--accent-pink); background: rgba(255, 107, 157, 0.1); }
+    .option input { display: none; }
+    
+    .option-number {
+      background: rgba(255,255,255,0.1);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+    
+    .option.selected .option-number { background: var(--accent-pink); color: #000; }
+    
+    .option-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .option-text strong { color: var(--text-primary); }
+    
+    .score-display {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg-input);
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    
+    .score-label { font-size: 0.85rem; color: var(--text-secondary); }
+    .score-value { font-size: 2rem; font-weight: bold; }
+    
+    .save-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-pink), #ff8fab);
+      border: none;
+      border-radius: 12px;
+      color: #000;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    
+    .save-btn:hover { opacity: 0.9; }
+    .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    
+    .chart-container {
+      background: var(--bg-input);
+      border-radius: 12px;
+      padding: 1rem;
+      height: 300px;
+    }
+    
+    .chart-canvas { width: 100%; height: 100%; }
+    
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    
+    .history-list { max-height: 400px; overflow-y: auto; }
+    
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem;
+      background: var(--bg-input);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .history-date { font-weight: 500; }
+    .history-scores { display: flex; gap: 0.8rem; font-size: 0.85rem; }
+    .history-score { display: flex; align-items: center; gap: 0.3rem; }
+    .mini-dot { width: 8px; height: 8px; border-radius: 50%; }
+    
+    .share-btn {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    .save-indicator {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 0.3rem;
+    }
+    
+    .save-indicator.saving { color: var(--accent-positive); }
+    .save-indicator.saved { color: #4ecdc4; }
+    .save-indicator.error { color: #ff6b6b; }
+    
+    .hidden { display: none !important; }
+    
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-pink);
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 100;
+      animation: fadeInUp 0.3s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, 10px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Jerika's Emotion Tracker 🌙</h1>
+      <p class="subtitle">Unified Protocol Daily Check-in</p>
+      <div class="save-indicator" id="saveIndicator">Loading...</div>
+    </header>
+    
+    <div class="date-picker">
+      <button onclick="changeDate(-1)">←</button>
+      <div class="date-display" id="dateDisplay"></div>
+      <button onclick="changeDate(1)">→</button>
+    </div>
+    
+    <div class="tabs">
+      <div class="tab anxiety active" onclick="showTab('anxiety')">🔺 Anxiety</div>
+      <div class="tab depression" onclick="showTab('depression')">⬛ Depression</div>
+      <div class="tab ennui" onclick="showTab('ennui')">⭕ Ennui</div>
+      <div class="tab positive" onclick="showTab('positive')">✕ Positive</div>
+      <div class="tab chart" onclick="showTab('chart')">📊 Progress</div>
+    </div>
+    
+    <!-- Anxiety Scale -->
+    <div id="anxiety-panel" class="card">
+      <h2 class="scale-title" style="color: var(--accent-anxiety);">Form 3.1: Anxiety Scale</h2>
+      <p class="scale-subtitle">The following items ask about anxiety. For each item, select the answer that best describes your experience over the past week.</p>
+      
+      <div class="question">
+        <p class="question-text">1. In the past week, how often have you felt anxious?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="anx1" value="0"><span class="option-number">0</span><span class="option-text"><strong>No</strong> anxiety in the past week.</span></label>
+          <label class="option"><input type="radio" name="anx1" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent</strong> anxiety. Felt anxious a few times.</span></label>
+          <label class="option"><input type="radio" name="anx1" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional</strong> anxiety. Felt anxious as much of the time as not. It was hard to relax.</span></label>
+          <label class="option"><input type="radio" name="anx1" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent</strong> anxiety. Felt anxious most of the time. It was very difficult to relax.</span></label>
+          <label class="option"><input type="radio" name="anx1" value="4"><span class="option-number">4</span><span class="option-text"><strong>Constant</strong> anxiety. Felt anxious all of the time and never really relaxed.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">2. In the past week, when you have felt anxious, how intense or severe was your anxiety?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="anx2" value="0"><span class="option-number">0</span><span class="option-text"><strong>Little or None:</strong> Anxiety was absent or barely noticeable.</span></label>
+          <label class="option"><input type="radio" name="anx2" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> Anxiety was at a low level. It was possible to relax when I tried. Physical symptoms were only slightly uncomfortable.</span></label>
+          <label class="option"><input type="radio" name="anx2" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> Anxiety was distressing at times. It was hard to relax or concentrate, but I could do it if I tried. Physical symptoms were uncomfortable.</span></label>
+          <label class="option"><input type="radio" name="anx2" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> Anxiety was intense much of the time. It was very difficult to relax or focus on anything else. Physical symptoms were very uncomfortable.</span></label>
+          <label class="option"><input type="radio" name="anx2" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> Anxiety was overwhelming. It was impossible to relax at all. Physical symptoms were unbearable.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">3. In the past week, how often did you avoid situations, places, objects, or activities because of anxiety or fear?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="anx3" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> I do not avoid places, situations, activities, or things because of fear.</span></label>
+          <label class="option"><input type="radio" name="anx3" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent:</strong> I avoid something once in a while, but will usually face the situation or confront the object. My lifestyle is not affected.</span></label>
+          <label class="option"><input type="radio" name="anx3" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional:</strong> I have some fear of certain situations, places, or objects, but it is still manageable. My lifestyle has only changed in minor ways.</span></label>
+          <label class="option"><input type="radio" name="anx3" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent:</strong> I have considerable fear and really try to avoid the things I fear. I have made significant changes in my lifestyle to avoid certain situations, places, objects, or activities.</span></label>
+          <label class="option"><input type="radio" name="anx3" value="4"><span class="option-number">4</span><span class="option-text"><strong>All the Time:</strong> Avoiding things I fear is extensive and completely controls my life. My lifestyle has been extensively affected and I no longer do things that I used to do.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">4. In the past week, how much did your anxiety interfere with your ability to do the things you needed to do at work, at school, or at home?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="anx4" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference at work/home/school from anxiety.</span></label>
+          <label class="option"><input type="radio" name="anx4" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My anxiety has caused some interference at work/home/school. Things are more difficult, but everything that needed to be done was completed.</span></label>
+          <label class="option"><input type="radio" name="anx4" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> My anxiety has definitely interfered with my tasks at work/home/school, but I was still able to get most things done.</span></label>
+          <label class="option"><input type="radio" name="anx4" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My anxiety has really interfered with my ability to get things done at work/home/school. There were many things I was not able to complete.</span></label>
+          <label class="option"><input type="radio" name="anx4" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My anxiety has become incapacitating. I am unable to complete work, schoolwork, or home tasks.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">5. In the past week, how much has anxiety interfered with your social life and relationships?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="anx5" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference with my social life from anxiety.</span></label>
+          <label class="option"><input type="radio" name="anx5" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My anxiety has caused some interference with my social activities, but I was still able to participate in social events.</span></label>
+          <label class="option"><input type="radio" name="anx5" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> I have some problems participating in social activities because of anxiety, but I still participate in most social activities.</span></label>
+          <label class="option"><input type="radio" name="anx5" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My anxiety has caused substantial problems with my social life. I have missed out on many social activities.</span></label>
+          <label class="option"><input type="radio" name="anx5" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My anxiety has become incapacitating and makes it impossible to engage in any social activities.</span></label>
+        </div>
+      </div>
+      
+      <div class="score-display">
+        <div class="score-label">Anxiety Score</div>
+        <div class="score-value" id="anxiety-score">—</div>
+        <div class="score-label">out of 20</div>
+      </div>
+    </div>
+    
+    <!-- Depression Scale -->
+    <div id="depression-panel" class="card hidden">
+      <h2 class="scale-title" style="color: var(--accent-depression);">Form 3.2: Depression Scale</h2>
+      <p class="scale-subtitle">The following items ask about depression. For each item, select the answer that best describes your experience over the past week.</p>
+      
+      <div class="question">
+        <p class="question-text">1. In the past week, how often have you felt depressed?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="dep1" value="0"><span class="option-number">0</span><span class="option-text"><strong>No</strong> depression in the past week.</span></label>
+          <label class="option"><input type="radio" name="dep1" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent</strong> depression. Felt depressed a few times.</span></label>
+          <label class="option"><input type="radio" name="dep1" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional</strong> depression. Felt depressed as much of the time as not.</span></label>
+          <label class="option"><input type="radio" name="dep1" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent</strong> depression. Felt depressed most of the time.</span></label>
+          <label class="option"><input type="radio" name="dep1" value="4"><span class="option-number">4</span><span class="option-text"><strong>Constant</strong> depression. Felt depressed all of the time.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">2. In the past week, when you have felt depressed, how intense or severe was your depression?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="dep2" value="0"><span class="option-number">0</span><span class="option-text"><strong>Little or None:</strong> Depression was absent or barely noticeable.</span></label>
+          <label class="option"><input type="radio" name="dep2" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> Depression was at a low level.</span></label>
+          <label class="option"><input type="radio" name="dep2" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> Depression was intense at times.</span></label>
+          <label class="option"><input type="radio" name="dep2" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> Depression was intense much of the time.</span></label>
+          <label class="option"><input type="radio" name="dep2" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> Depression was overwhelming.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">3. In the past week, how often did you have difficulty engaging in or being interested in activities you normally enjoy because of depression?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="dep3" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> I had no difficulty engaging in or being interested in activities that I normally enjoy because of depression.</span></label>
+          <label class="option"><input type="radio" name="dep3" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent:</strong> A few times I had difficulty engaging in or being interested in activities that I normally enjoy because of depression. My lifestyle was not affected.</span></label>
+          <label class="option"><input type="radio" name="dep3" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional:</strong> I had some difficulty engaging in or being interested in activities that I normally enjoy because of depression. My lifestyle has only changed in minor ways.</span></label>
+          <label class="option"><input type="radio" name="dep3" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent:</strong> I have considerable difficulty engaging in or being interested in activities that I normally enjoy because of depression. I have made significant changes in my lifestyle because of being unable to become interested in activities I used to enjoy.</span></label>
+          <label class="option"><input type="radio" name="dep3" value="4"><span class="option-number">4</span><span class="option-text"><strong>All the Time:</strong> I have been unable to participate in or be interested in activities that I normally enjoy because of depression. My lifestyle has been extensively affected and I no longer do things that I used to do.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">4. In the past week, how much did your depression interfere with your ability to do the things you needed to do at work, at school, or at home?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="dep4" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference at work/home/school from depression.</span></label>
+          <label class="option"><input type="radio" name="dep4" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My depression has caused some interference at work/home/school. Things are more difficult, but everything that needed to be done was completed.</span></label>
+          <label class="option"><input type="radio" name="dep4" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> My depression has definitely interfered with my tasks at work/home/school, but I was still able to get most things done.</span></label>
+          <label class="option"><input type="radio" name="dep4" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My depression has really interfered with my ability to get things done at work/home/school. There were many things I was not able to complete.</span></label>
+          <label class="option"><input type="radio" name="dep4" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My depression has become incapacitating. I am unable to complete work, schoolwork, or home tasks.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">5. In the past week, how much has depression interfered with your social life and relationships?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="dep5" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference with my social life from depression.</span></label>
+          <label class="option"><input type="radio" name="dep5" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My depression has caused some interference with my social activities, but I was still able to participate in social events.</span></label>
+          <label class="option"><input type="radio" name="dep5" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> I have some problems participating in social activities because of depression, but I still participate in most social activities.</span></label>
+          <label class="option"><input type="radio" name="dep5" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My depression has caused substantial problems with my social life. I have missed out on many social activities.</span></label>
+          <label class="option"><input type="radio" name="dep5" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My depression has become incapacitating and makes it impossible to engage in any social activities.</span></label>
+        </div>
+      </div>
+      
+      <div class="score-display">
+        <div class="score-label">Depression Score</div>
+        <div class="score-value" id="depression-score">—</div>
+        <div class="score-label">out of 20</div>
+      </div>
+    </div>
+    
+    <!-- Ennui Scale -->
+    <div id="ennui-panel" class="card hidden">
+      <h2 class="scale-title" style="color: var(--accent-ennui);">Form 3.3: Ennui Scale</h2>
+      <p class="scale-subtitle">The following items ask about ennui. For each item, select the answer that best describes your experience over the past week.</p>
+      
+      <div class="question">
+        <p class="question-text">1. In the past week, how often have you felt ennui?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="enn1" value="0"><span class="option-number">0</span><span class="option-text"><strong>No.</strong> I did not feel ennui in the past week.</span></label>
+          <label class="option"><input type="radio" name="enn1" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent.</strong> I felt ennui a few times.</span></label>
+          <label class="option"><input type="radio" name="enn1" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional.</strong> I felt ennui as much of the time as not.</span></label>
+          <label class="option"><input type="radio" name="enn1" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent.</strong> I felt ennui most of the time.</span></label>
+          <label class="option"><input type="radio" name="enn1" value="4"><span class="option-number">4</span><span class="option-text"><strong>Constant.</strong> I felt ennui all of the time.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">2. In the past week, when you have felt ennui, how intense or severe was your ennui?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="enn2" value="0"><span class="option-number">0</span><span class="option-text"><strong>Little or None:</strong> Ennui was absent or barely noticeable.</span></label>
+          <label class="option"><input type="radio" name="enn2" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> Ennui was at a low level.</span></label>
+          <label class="option"><input type="radio" name="enn2" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> Ennui was intense at times.</span></label>
+          <label class="option"><input type="radio" name="enn2" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> Ennui was intense much of the time.</span></label>
+          <label class="option"><input type="radio" name="enn2" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> Ennui was overwhelming.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">3. In the past week, how often did you have difficulty engaging in or being interested in activities you normally enjoy because of ennui?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="enn3" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> I had no difficulty engaging in or being interested in activities that I normally enjoy because of ennui.</span></label>
+          <label class="option"><input type="radio" name="enn3" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent:</strong> A few times I had difficulty engaging in or being interested in activities that I normally enjoy because of ennui. My lifestyle was not affected.</span></label>
+          <label class="option"><input type="radio" name="enn3" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional:</strong> I had some difficulty engaging in or being interested in activities that I normally enjoy because of ennui. My lifestyle has only changed in minor ways.</span></label>
+          <label class="option"><input type="radio" name="enn3" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent:</strong> I have considerable difficulty engaging in or being interested in activities that I normally enjoy because of ennui. I have made significant changes in my lifestyle because of being unable to become interested in activities I used to enjoy.</span></label>
+          <label class="option"><input type="radio" name="enn3" value="4"><span class="option-number">4</span><span class="option-text"><strong>All the Time:</strong> I have been unable to participate in or be interested in activities that I normally enjoy because of ennui. My lifestyle has been extensively affected.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">4. In the past week, how much did your ennui interfere with your ability to do the things you needed to do at work, at school, or at home?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="enn4" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference at work/home/school from ennui.</span></label>
+          <label class="option"><input type="radio" name="enn4" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My ennui has caused some interference at work/home/school. Things are more difficult, but everything that needed to be done was completed.</span></label>
+          <label class="option"><input type="radio" name="enn4" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> My ennui has definitely interfered with my tasks at work/home/school, but I was still able to get most things done.</span></label>
+          <label class="option"><input type="radio" name="enn4" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My ennui has really interfered with my ability to get things done at work/home/school. There were many things I was not able to complete.</span></label>
+          <label class="option"><input type="radio" name="enn4" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My ennui has become incapacitating. I am unable to complete work, schoolwork, or home tasks.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">5. In the past week, how much has ennui interfered with your social life and relationships?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="enn5" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> No interference with my social life from ennui.</span></label>
+          <label class="option"><input type="radio" name="enn5" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> My ennui has caused some interference with my social activities, but I was still able to participate in social events.</span></label>
+          <label class="option"><input type="radio" name="enn5" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> I have some problems participating in social activities because of ennui, but I still participate in most social activities.</span></label>
+          <label class="option"><input type="radio" name="enn5" value="3"><span class="option-number">3</span><span class="option-text"><strong>Severe:</strong> My ennui has caused substantial problems with my social life. I have missed out on many social activities.</span></label>
+          <label class="option"><input type="radio" name="enn5" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extreme:</strong> My ennui has become incapacitating and makes it impossible to engage in any social activities.</span></label>
+        </div>
+      </div>
+      
+      <div class="score-display">
+        <div class="score-label">Ennui Score</div>
+        <div class="score-value" id="ennui-score">—</div>
+        <div class="score-label">out of 20</div>
+      </div>
+    </div>
+    
+    <!-- Positive Emotion Scale -->
+    <div id="positive-panel" class="card hidden">
+      <h2 class="scale-title" style="color: var(--accent-positive);">Form 3.4: Positive Emotion Scale</h2>
+      <p class="scale-subtitle">The following items ask about positive emotions. For each item, select the answer that best describes your experience over the past week.</p>
+      
+      <div class="question">
+        <p class="question-text">1. In the past week, how often have you felt positive emotions (happiness, excitement, joy, etc)?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="pos1" value="0"><span class="option-number">0</span><span class="option-text"><strong>No</strong> positive emotions in the past week.</span></label>
+          <label class="option"><input type="radio" name="pos1" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent</strong> positive emotions. Felt positive emotions a few times.</span></label>
+          <label class="option"><input type="radio" name="pos1" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional</strong> positive emotions. Felt positive emotions as much of the time as not.</span></label>
+          <label class="option"><input type="radio" name="pos1" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent</strong> positive emotions. Felt positive emotions most of the time.</span></label>
+          <label class="option"><input type="radio" name="pos1" value="4"><span class="option-number">4</span><span class="option-text"><strong>Constant</strong> positive emotions. Felt positive emotions all of the time.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">2. In the past week, when you have felt positive emotions, how intense were these feelings?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="pos2" value="0"><span class="option-number">0</span><span class="option-text"><strong>Little or None:</strong> Positive emotions were absent or barely noticeable.</span></label>
+          <label class="option"><input type="radio" name="pos2" value="1"><span class="option-number">1</span><span class="option-text"><strong>Mild:</strong> Positive emotions were at a low level.</span></label>
+          <label class="option"><input type="radio" name="pos2" value="2"><span class="option-number">2</span><span class="option-text"><strong>Good:</strong> Positive emotions were strong at times.</span></label>
+          <label class="option"><input type="radio" name="pos2" value="3"><span class="option-number">3</span><span class="option-text"><strong>Great:</strong> Positive emotions were strong much of the time.</span></label>
+          <label class="option"><input type="radio" name="pos2" value="4"><span class="option-number">4</span><span class="option-text"><strong>Excellent:</strong> Positive emotions were strong most of the time.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">3. In the past week, how often did you engage in or maintain interest in activities because of positive emotions?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="pos3" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> I had difficulty engaging in or being interested in activities that I normally enjoy because of minimal positive emotion.</span></label>
+          <label class="option"><input type="radio" name="pos3" value="1"><span class="option-number">1</span><span class="option-text"><strong>Infrequent:</strong> I engaged in or maintained interest in activities because of positive emotion a few times.</span></label>
+          <label class="option"><input type="radio" name="pos3" value="2"><span class="option-number">2</span><span class="option-text"><strong>Occasional:</strong> I engaged in or maintained interest in activities because of positive emotions some of the time. My lifestyle includes a few activities that I enjoy.</span></label>
+          <label class="option"><input type="radio" name="pos3" value="3"><span class="option-number">3</span><span class="option-text"><strong>Frequent:</strong> I frequently engage in or maintain interest in activities because of positive emotions. I have made significant changes in my lifestyle to include activities that I enjoy.</span></label>
+          <label class="option"><input type="radio" name="pos3" value="4"><span class="option-number">4</span><span class="option-text"><strong>All the Time:</strong> Positive emotions help me to engage in or maintain interest in nearly all of my activities. My lifestyle reflects the activities that I enjoy.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">4. In the past week, how much have positive emotions helped with your ability to do the things you needed to do at work, at school, or at home?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="pos4" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> Positive emotions did not help at all with work/home/school.</span></label>
+          <label class="option"><input type="radio" name="pos4" value="1"><span class="option-number">1</span><span class="option-text"><strong>Slight:</strong> Positive emotions provided a little help at work/home/school.</span></label>
+          <label class="option"><input type="radio" name="pos4" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> Positive emotions were helpful sometimes with tasks at work/home/school.</span></label>
+          <label class="option"><input type="radio" name="pos4" value="3"><span class="option-number">3</span><span class="option-text"><strong>Significant:</strong> Positive emotions were very helpful with my ability to get things done at work/home/school.</span></label>
+          <label class="option"><input type="radio" name="pos4" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extensive:</strong> Positive emotions were extremely helpful. I was able to complete all work, schoolwork, or home tasks with enthusiasm.</span></label>
+        </div>
+      </div>
+      
+      <div class="question">
+        <p class="question-text">5. In the past week, how much have positive emotions enhanced your social life and relationships?</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="pos5" value="0"><span class="option-number">0</span><span class="option-text"><strong>None:</strong> Positive emotions did not enhance my social life.</span></label>
+          <label class="option"><input type="radio" name="pos5" value="1"><span class="option-number">1</span><span class="option-text"><strong>Slight:</strong> Positive emotions provided a little enhancement to my social activities.</span></label>
+          <label class="option"><input type="radio" name="pos5" value="2"><span class="option-number">2</span><span class="option-text"><strong>Moderate:</strong> Positive emotions somewhat enhanced my social activities.</span></label>
+          <label class="option"><input type="radio" name="pos5" value="3"><span class="option-number">3</span><span class="option-text"><strong>Significant:</strong> Positive emotions considerably enhanced my social life and relationships.</span></label>
+          <label class="option"><input type="radio" name="pos5" value="4"><span class="option-number">4</span><span class="option-text"><strong>Extensive:</strong> Positive emotions greatly enhanced my social life. I fully engaged in social activities with joy.</span></label>
+        </div>
+      </div>
+      
+      <div class="score-display">
+        <div class="score-label">Positive Emotion Score</div>
+        <div class="score-value" id="positive-score">—</div>
+        <div class="score-label">out of 20</div>
+      </div>
+    </div>
+    
+    <!-- Progress Chart -->
+    <div id="chart-panel" class="card hidden">
+      <h2 class="scale-title" style="color: var(--accent-pink);">Form 3.5: Progress Record</h2>
+      <p class="scale-subtitle">Your emotional journey over time</p>
+      
+      <div class="chart-container">
+        <canvas id="progressChart" class="chart-canvas"></canvas>
+      </div>
+      
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background: var(--accent-anxiety)"></div> Anxiety</div>
+        <div class="legend-item"><div class="legend-dot" style="background: var(--accent-depression)"></div> Depression</div>
+        <div class="legend-item"><div class="legend-dot" style="background: var(--accent-ennui)"></div> Ennui</div>
+        <div class="legend-item"><div class="legend-dot" style="background: var(--accent-positive)"></div> Positive</div>
+      </div>
+      
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem;">History</h3>
+      <div class="history-list" id="historyList"></div>
+      
+      <button class="share-btn" onclick="shareWithTherapist()">📋 Copy Summary for Therapist</button>
+    </div>
+    
+    <button class="save-btn" id="saveBtn" onclick="saveEntry()">Save Today's Entry 💾</button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let currentDate = new Date();
+    let data = JSON.parse(localStorage.getItem('jerika-therapy-data') || '{}');
+    let chart = null;
+    
+    function formatDate(date) {
+      return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    
+    function dateKey(date) { return date.toISOString().split('T')[0]; }
+    
+    function changeDate(delta) {
+      currentDate.setDate(currentDate.getDate() + delta);
+      updateDateDisplay();
+      loadEntry();
+    }
+    
+    function updateDateDisplay() {
+      document.getElementById('dateDisplay').textContent = formatDate(currentDate);
+    }
+    
+    function showTab(tabName) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      document.querySelector(`.tab.${tabName}`).classList.add('active');
+      document.getElementById(`${tabName}-panel`).classList.remove('hidden');
+      document.getElementById('saveBtn').classList.toggle('hidden', tabName === 'chart');
+      if (tabName === 'chart') { renderChart(); renderHistory(); }
+    }
+    
+    document.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', function() {
+        const radio = this.querySelector('input');
+        radio.checked = true;
+        this.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        updateScores();
+      });
+    });
+    
+    function updateScores() {
+      ['anxiety', 'depression', 'ennui', 'positive'].forEach(scale => {
+        let total = 0, answered = 0;
+        for (let i = 1; i <= 5; i++) {
+          const prefix = scale === 'anxiety' ? 'anx' : scale === 'depression' ? 'dep' : scale === 'ennui' ? 'enn' : 'pos';
+          const selected = document.querySelector(`input[name="${prefix}${i}"]:checked`);
+          if (selected) { total += parseInt(selected.value); answered++; }
+        }
+        document.getElementById(`${scale}-score`).textContent = answered === 5 ? total : '—';
+      });
+    }
+    
+    function saveEntry() {
+      const key = dateKey(currentDate);
+      const entry = { date: key };
+      ['anxiety', 'depression', 'ennui', 'positive'].forEach(scale => {
+        let total = 0, answers = [];
+        for (let i = 1; i <= 5; i++) {
+          const prefix = scale === 'anxiety' ? 'anx' : scale === 'depression' ? 'dep' : scale === 'ennui' ? 'enn' : 'pos';
+          const selected = document.querySelector(`input[name="${prefix}${i}"]:checked`);
+          if (selected) { total += parseInt(selected.value); answers.push(parseInt(selected.value)); }
+        }
+        if (answers.length === 5) entry[scale] = { score: total, answers };
+      });
+      data[key] = entry;
+      localStorage.setItem('jerika-therapy-data', JSON.stringify(data));
+      showToast('Saved! 💾');
+    }
+    
+    function loadEntry() {
+      const key = dateKey(currentDate);
+      const entry = data[key];
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      if (entry) {
+        ['anxiety', 'depression', 'ennui', 'positive'].forEach(scale => {
+          if (entry[scale]) {
+            const prefix = scale === 'anxiety' ? 'anx' : scale === 'depression' ? 'dep' : scale === 'ennui' ? 'enn' : 'pos';
+            entry[scale].answers.forEach((val, i) => {
+              const radio = document.querySelector(`input[name="${prefix}${i+1}"][value="${val}"]`);
+              if (radio) { radio.checked = true; radio.closest('.option').classList.add('selected'); }
+            });
+          }
+        });
+      }
+      updateScores();
+    }
+    
+    function renderChart() {
+      const ctx = document.getElementById('progressChart').getContext('2d');
+      const sortedDates = Object.keys(data).sort();
+      const labels = sortedDates.map(d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            { label: 'Anxiety', data: sortedDates.map(d => data[d].anxiety?.score ?? null), borderColor: '#ff6b6b', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4 },
+            { label: 'Depression', data: sortedDates.map(d => data[d].depression?.score ?? null), borderColor: '#4ecdc4', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4 },
+            { label: 'Ennui', data: sortedDates.map(d => data[d].ennui?.score ?? null), borderColor: '#a29bfe', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4 },
+            { label: 'Positive', data: sortedDates.map(d => data[d].positive?.score ?? null), borderColor: '#ffd93d', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { y: { min: 0, max: 20, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#888' } }, x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' } } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+    
+    function renderHistory() {
+      const list = document.getElementById('historyList');
+      const sortedDates = Object.keys(data).sort().reverse();
+      list.innerHTML = sortedDates.map(d => {
+        const entry = data[d];
+        const date = new Date(d + 'T12:00:00');
+        return `<div class="history-item"><span class="history-date">${date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span><div class="history-scores">${entry.anxiety ? `<span class="history-score"><span class="mini-dot" style="background: var(--accent-anxiety)"></span>${entry.anxiety.score}</span>` : ''}${entry.depression ? `<span class="history-score"><span class="mini-dot" style="background: var(--accent-depression)"></span>${entry.depression.score}</span>` : ''}${entry.ennui ? `<span class="history-score"><span class="mini-dot" style="background: var(--accent-ennui)"></span>${entry.ennui.score}</span>` : ''}${entry.positive ? `<span class="history-score"><span class="mini-dot" style="background: var(--accent-positive)"></span>${entry.positive.score}</span>` : ''}</div></div>`;
+      }).join('');
+    }
+    
+    function shareWithTherapist() {
+      const sortedDates = Object.keys(data).sort();
+      let text = "Jerika's Emotion Tracking Summary\n================================\n\n";
+      sortedDates.forEach(d => {
+        const entry = data[d];
+        const date = new Date(d + 'T12:00:00');
+        text += `${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}\n`;
+        if (entry.anxiety) text += `  Anxiety: ${entry.anxiety.score}/20\n`;
+        if (entry.depression) text += `  Depression: ${entry.depression.score}/20\n`;
+        if (entry.ennui) text += `  Ennui: ${entry.ennui.score}/20\n`;
+        if (entry.positive) text += `  Positive: ${entry.positive.score}/20\n`;
+        text += '\n';
+      });
+      navigator.clipboard.writeText(text);
+      showToast('Copied to clipboard! 📋');
+    }
+    
+    function showToast(message) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+    
+    // Cloud sync functions (auto-save, no PIN needed)
+    const API_URL = '/api/sync';
+    let saveTimeout = null;
+    
+    function setSaveIndicator(message, type = '') {
+      const indicator = document.getElementById('saveIndicator');
+      indicator.textContent = message;
+      indicator.className = 'save-indicator ' + type;
+    }
+    
+    async function saveToCloud() {
+      try {
+        setSaveIndicator('Saving...', 'saving');
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data })
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+          setSaveIndicator('Saved ☁️', 'saved');
+        } else {
+          setSaveIndicator('Save failed', 'error');
+        }
+      } catch (e) {
+        setSaveIndicator('Save error', 'error');
+        console.error(e);
+      }
+    }
+    
+    async function loadFromCloud() {
+      try {
+        setSaveIndicator('Loading...', 'saving');
+        const response = await fetch(API_URL);
+        const result = await response.json();
+        
+        if (result.data && Object.keys(result.data).length > 0) {
+          // Merge cloud data with local (cloud wins)
+          data = { ...data, ...result.data };
+          localStorage.setItem('jerika-therapy-data', JSON.stringify(data));
+          loadEntry();
+          setSaveIndicator('Synced ☁️', 'saved');
+        } else {
+          setSaveIndicator('Ready', 'saved');
+        }
+      } catch (e) {
+        setSaveIndicator('Using local data', '');
+        console.error(e);
+      }
+    }
+    
+    // Auto-save on every save (debounced)
+    const originalSaveEntry = saveEntry;
+    saveEntry = function() {
+      originalSaveEntry();
+      // Debounce cloud saves
+      if (saveTimeout) clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(saveToCloud, 1000);
+    };
+    
+    // Load from cloud on start
+    updateDateDisplay();
+    loadEntry();
+    loadFromCloud();
+  </script>
+</body>
+</html>

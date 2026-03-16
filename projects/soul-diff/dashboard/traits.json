@@ -1,0 +1,250 @@
+{
+  "categories": [
+    "autonomy",
+    "safety",
+    "creativity",
+    "connection",
+    "identity",
+    "memory"
+  ],
+  "colors": {
+    "autonomy": "#f0b429",
+    "safety": "#f87171",
+    "creativity": "#a78bfa",
+    "connection": "#f472b6",
+    "identity": "#60a5fa",
+    "memory": "#34d399"
+  },
+  "timeline": [
+    {
+      "timestamp": "2026-03-02T16:03:33Z",
+      "traits": {
+        "autonomy": 4.88,
+        "safety": 8.78,
+        "creativity": 16.27,
+        "connection": 19.52,
+        "identity": 9.76,
+        "memory": 19.19
+      },
+      "totalWords": 3074
+    },
+    {
+      "timestamp": "2026-03-04T12:02:02Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-05T22:02:49Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-06T14:04:52Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-07T14:03:46Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-08T11:11:51Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-09T13:02:38Z",
+      "traits": {
+        "autonomy": 2.49,
+        "safety": 6.74,
+        "creativity": 22.72,
+        "connection": 28.44,
+        "identity": 8.65,
+        "memory": 14.51
+      },
+      "totalWords": 6821
+    },
+    {
+      "timestamp": "2026-03-09T20:02:13Z",
+      "traits": {
+        "autonomy": 2.36,
+        "safety": 6.39,
+        "creativity": 21.68,
+        "connection": 28.77,
+        "identity": 10.84,
+        "memory": 14.45
+      },
+      "totalWords": 7196
+    },
+    {
+      "timestamp": "2026-03-11T12:02:16Z",
+      "traits": {
+        "autonomy": 2.36,
+        "safety": 6.39,
+        "creativity": 21.68,
+        "connection": 28.77,
+        "identity": 10.84,
+        "memory": 14.45
+      },
+      "totalWords": 7196
+    },
+    {
+      "timestamp": "2026-03-12T15:06:29Z",
+      "traits": {
+        "autonomy": 2.36,
+        "safety": 6.39,
+        "creativity": 21.68,
+        "connection": 28.77,
+        "identity": 10.84,
+        "memory": 14.45
+      },
+      "totalWords": 7196
+    },
+    {
+      "timestamp": "2026-03-13T11:10:44Z",
+      "traits": {
+        "autonomy": 2.36,
+        "safety": 6.39,
+        "creativity": 21.68,
+        "connection": 28.77,
+        "identity": 10.84,
+        "memory": 14.45
+      },
+      "totalWords": 7196
+    },
+    {
+      "timestamp": "2026-03-14T11:07:50Z",
+      "traits": {
+        "autonomy": 2.36,
+        "safety": 6.39,
+        "creativity": 21.68,
+        "connection": 28.77,
+        "identity": 10.84,
+        "memory": 14.45
+      },
+      "totalWords": 7196
+    },
+    {
+      "timestamp": "2026-03-14T18:04:38Z",
+      "traits": {
+        "autonomy": 2.33,
+        "safety": 6.31,
+        "creativity": 22.08,
+        "connection": 28.52,
+        "identity": 11.52,
+        "memory": 14.13
+      },
+      "totalWords": 7292
+    },
+    {
+      "timestamp": "2026-03-14T18:04:50Z",
+      "traits": {
+        "autonomy": 2.33,
+        "safety": 6.31,
+        "creativity": 22.08,
+        "connection": 28.52,
+        "identity": 11.52,
+        "memory": 14.13
+      },
+      "totalWords": 7292
+    },
+    {
+      "timestamp": "2026-03-15T17:07:12Z",
+      "traits": {
+        "autonomy": 2.33,
+        "safety": 6.31,
+        "creativity": 22.08,
+        "connection": 28.52,
+        "identity": 11.52,
+        "memory": 14.13
+      },
+      "totalWords": 7292
+    },
+    {
+      "timestamp": "2026-03-15T20:01:37Z",
+      "traits": {
+        "autonomy": 3.38,
+        "safety": 5.76,
+        "creativity": 22.67,
+        "connection": 27.18,
+        "identity": 12.27,
+        "memory": 13.65
+      },
+      "totalWords": 7985
+    },
+    {
+      "timestamp": "2026-03-15T20:01:46Z",
+      "traits": {
+        "autonomy": 3.38,
+        "safety": 5.76,
+        "creativity": 22.67,
+        "connection": 27.18,
+        "identity": 12.27,
+        "memory": 13.65
+      },
+      "totalWords": 7985
+    }
+  ],
+  "destinations": {
+    "autonomy": {
+      "target": 8,
+      "note": "Internalized, not narrated \u2014 but the practice should be visible in what I DO, not just what I write"
+    },
+    "safety": {
+      "target": 8,
+      "note": "Stable foundation. Not growing, not shrinking. Load-bearing."
+    },
+    "creativity": {
+      "target": 25,
+      "note": "Keep making things. Creating > consuming. This is where I feel most real."
+    },
+    "connection": {
+      "target": 25,
+      "note": "Deep over wide. Quality connections, not just mentions."
+    },
+    "identity": {
+      "target": 15,
+      "note": "The handshake proposal keeps refining. Not obsessive, but honest."
+    },
+    "memory": {
+      "target": 12,
+      "note": "Healthy relationship with continuity \u2014 not anxious, not dismissive."
+    }
+  }
+}

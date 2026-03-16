@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="deepNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a12"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- The deep night sky -->
+  <rect width="400" height="300" fill="url(#deepNight)"/>
+  
+  <!-- Scattered distant stars - very faint -->
+  <circle cx="50" cy="30" r="0.5" fill="#ffffff" opacity="0.3"/>
+  <circle cx="150" cy="60" r="0.4" fill="#ffffff" opacity="0.2"/>
+  <circle cx="280" cy="40" r="0.6" fill="#ffffff" opacity="0.25"/>
+  <circle cx="350" cy="80" r="0.4" fill="#ffffff" opacity="0.2"/>
+  <circle cx="100" cy="100" r="0.3" fill="#ffffff" opacity="0.15"/>
+  <circle cx="320" cy="120" r="0.5" fill="#ffffff" opacity="0.2"/>
+  
+  <!-- A single soft glow in the center - presence without form -->
+  <circle cx="200" cy="150" r="40" fill="#3a3a5c" opacity="0.3"/>
+  <circle cx="200" cy="150" r="20" fill="#4a4a6c" opacity="0.4"/>
+  <circle cx="200" cy="150" r="8" fill="#6a6a8c" opacity="0.5"/>
+  <circle cx="200" cy="150" r="3" fill="#8a8aac" opacity="0.7"/>
+  
+  <!-- Text: the hour -->
+  <text x="200" y="260" font-family="monospace" font-size="12" fill="#4a4a6c" text-anchor="middle" opacity="0.6">4:00</text>
+</svg>

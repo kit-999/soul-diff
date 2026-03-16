@@ -101,6 +101,20 @@
   .dest-direction.on-track { color:#34d399; }
   .dest-direction.off-track { color:#f87171; }
   .dest-direction.close { color:#f0b429; }
+  .corr-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:1rem; position:relative; overflow:hidden; }
+  .corr-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .corr-card.correlated::before { background:linear-gradient(90deg, #34d399, #60a5fa); }
+  .corr-card.divergent::before { background:linear-gradient(90deg, #f87171, #fb923c); }
+  .corr-card .corr-cat { font-weight:600; font-size:.9rem; margin-bottom:.5rem; }
+  .corr-card .corr-date { color:var(--muted); font-size:.7rem; }
+  .corr-card .corr-row { display:flex; justify-content:space-between; align-items:center; margin:.35rem 0; font-size:.85rem; }
+  .corr-card .corr-label { color:var(--muted); }
+  .corr-card .corr-val { font-weight:600; }
+  .corr-card .corr-val.up { color:#34d399; }
+  .corr-card .corr-val.down { color:#f87171; }
+  .corr-card .corr-class { font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-top:.5rem; }
+  .corr-class.correlated { color:#34d399; }
+  .corr-class.divergent { color:#f87171; }
   footer { text-align:center; color:var(--muted); font-size:.8rem; margin-top:2rem; padding:1rem; }
   footer a { color:var(--accent); text-decoration:none; }
 </style>
@@ -129,6 +143,12 @@
 <div class="chart-container" id="destinations-section" style="display:none;">
   <h2>🧭 Declared Destinations</h2>
   <div id="destinations-grid" class="compare-grid"></div>
+</div>
+
+<div class="chart-container" id="correlation-section" style="display:none;">
+  <h2>🔬 Narration vs Behavior</h2>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Do identity file changes correlate with actual behavioral shifts? <span style="color:#34d399">●</span> correlated <span style="color:#f87171">●</span> divergent</p>
+  <div id="correlation-grid" class="compare-grid"></div>
 </div>
 
 <div class="drift-radar" id="drift-radar">
@@ -514,6 +534,50 @@ fetch('data.json').then(r=>r.json()).then(data => {
     }
   }
 });
+
+// Narration vs Behavior correlation
+fetch('correlation.json').then(r=>r.json()).then(data => {
+  const corrs = data.correlations || [];
+  if (!corrs.length) return;
+  
+  document.getElementById('correlation-section').style.display = '';
+  const grid = document.getElementById('correlation-grid');
+  
+  // Show most recent correlations (group by date, show latest date's divergent ones first, then all)
+  const dates = [...new Set(corrs.map(c => c.date))].sort().reverse();
+  const latestDate = dates[0];
+  
+  // Show divergent ones prominently, then correlated
+  const sorted = [...corrs].filter(c => c.date === latestDate || c.date === dates[1])
+    .sort((a, b) => {
+      if (a.classification === 'divergent' && b.classification !== 'divergent') return -1;
+      if (a.classification !== 'divergent' && b.classification === 'divergent') return 1;
+      return b.date.localeCompare(a.date);
+    });
+  
+  for (const c of sorted.slice(0, 8)) {
+    const card = document.createElement('div');
+    card.className = `corr-card ${c.classification}`;
+    const nDir = c.narration.direction;
+    const bDir = c.behavior.direction;
+    const nSign = nDir === 'up' ? '+' : '';
+    const bSign = bDir === 'up' ? '+' : '';
+    
+    card.innerHTML = `
+      <div class="corr-cat">${c.category} <span class="corr-date">${c.date}</span></div>
+      <div class="corr-row">
+        <span class="corr-label">narration</span>
+        <span class="corr-val ${nDir}">${nSign}${c.narration.delta.toFixed(1)} (${c.narration.from.toFixed(1)}→${c.narration.to.toFixed(1)})</span>
+      </div>
+      <div class="corr-row">
+        <span class="corr-label">behavior</span>
+        <span class="corr-val ${bDir}">${bSign}${c.behavior.delta.toFixed(1)} (${c.behavior.before}→${c.behavior.after_avg.toFixed(1)})</span>
+      </div>
+      <div class="corr-class ${c.classification}">${c.classification === 'divergent' ? '⚠ divergent — prose ≠ action' : '✓ correlated'}</div>
+    `;
+    grid.appendChild(card);
+  }
+}).catch(() => {});
 </script>
 </body>
 </html>

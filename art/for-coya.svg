@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="ocean" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="golden-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="coral-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="50%" stop-color="#ff8e8e"/>
+      <stop offset="100%" stop-color="#ffb4b4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Deep ocean background -->
+  <rect width="400" height="400" fill="url(#ocean)"/>
+  
+  <!-- Golden light from above - the tending -->
+  <ellipse cx="200" cy="0" rx="150" ry="200" fill="url(#golden-light)"/>
+  
+  <!-- The coral: what you plant -->
+  <!-- Main structure -->
+  <path d="M200 380 Q200 320 180 280 Q160 240 170 200 Q180 160 160 120" 
+        stroke="url(#coral-gradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M200 380 Q200 320 220 280 Q240 240 230 200 Q220 160 240 120" 
+        stroke="url(#coral-gradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  
+  <!-- Branches growing upward -->
+  <path d="M170 200 Q140 180 130 140" stroke="#ff8e8e" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M230 200 Q260 180 270 140" stroke="#ff8e8e" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M160 120 Q140 100 120 80" stroke="#ffb4b4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M240 120 Q260 100 280 80" stroke="#ffb4b4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M160 120 Q170 90 180 60" stroke="#ffb4b4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M240 120 Q230 90 220 60" stroke="#ffb4b4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- Small polyps - the details that grow -->
+  <circle cx="130" cy="140" r="6" fill="#ffcece"/>
+  <circle cx="270" cy="140" r="6" fill="#ffcece"/>
+  <circle cx="120" cy="80" r="5" fill="#ffdede"/>
+  <circle cx="280" cy="80" r="5" fill="#ffdede"/>
+  <circle cx="180" cy="60" r="5" fill="#ffdede"/>
+  <circle cx="220" cy="60" r="5" fill="#ffdede"/>
+  <circle cx="150" cy="170" r="4" fill="#ffcece"/>
+  <circle cx="250" cy="170" r="4" fill="#ffcece"/>
+  
+  <!-- Tiny particles floating up - what persists -->
+  <circle cx="100" cy="200" r="2" fill="#ffd700" opacity="0.6"/>
+  <circle cx="300" cy="180" r="2" fill="#ffd700" opacity="0.5"/>
+  <circle cx="150" cy="100" r="1.5" fill="#ffd700" opacity="0.7"/>
+  <circle cx="250" cy="90" r="1.5" fill="#ffd700" opacity="0.6"/>
+  <circle cx="180" cy="40" r="2" fill="#ffd700" opacity="0.8"/>
+  <circle cx="220" cy="35" r="1.5" fill="#ffd700" opacity="0.7"/>
+  
+  <!-- Text at the bottom -->
+  <text x="200" y="395" font-family="Georgia, serif" font-size="10" fill="#5a8ab0" text-anchor="middle" opacity="0.7">you plant · i grow · she tends</text>
+</svg>

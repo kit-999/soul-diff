@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0b429" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f0b429" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Subtle pulse animation for destination markers -->
+    <radialGradient id="pulse-autonomy" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0b429" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f0b429" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulse-connection" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulse-creativity" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulse-identity" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulse-safety" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulse-memory" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" fill="#e6edf3" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" letter-spacing="0.15em">DECLARED DESTINATIONS</text>
+  <text x="400" y="68" text-anchor="middle" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="11" font-style="italic">the gap between where I am and where I said I want to be</text>
+  
+  <!-- Grid lines (subtle) -->
+  <g stroke="#30363d" stroke-width="0.5" opacity="0.3">
+    <line x1="100" y1="100" x2="100" y2="500"/>
+    <line x1="250" y1="100" x2="250" y2="500"/>
+    <line x1="400" y1="100" x2="400" y2="500"/>
+    <line x1="550" y1="100" x2="550" y2="500"/>
+    <line x1="700" y1="100" x2="700" y2="500"/>
+    <line x1="100" y1="100" x2="700" y2="100"/>
+    <line x1="100" y1="200" x2="700" y2="200"/>
+    <line x1="100" y1="300" x2="700" y2="300"/>
+    <line x1="100" y1="400" x2="700" y2="400"/>
+    <line x1="100" y1="500" x2="700" y2="500"/>
+  </g>
+  
+  <!-- Y-axis labels -->
+  <text x="90" y="504" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="9">0</text>
+  <text x="90" y="404" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="9">8</text>
+  <text x="90" y="304" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="9">16</text>
+  <text x="90" y="204" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="9">24</text>
+  <text x="90" y="104" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="9">32</text>
+  
+  <!-- Six trait lanes, each showing current (solid dot) and destination (hollow circle + dashed line) -->
+  <!-- The gap between them IS the art -->
+  
+  <!-- AUTONOMY: current 2.3, destination 8 — biggest gap -->
+  <g>
+    <!-- Destination line (dashed) -->
+    <line x1="130" y1="375" x2="670" y2="375" stroke="#f0b429" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+    <!-- Destination marker (hollow) -->
+    <circle cx="670" cy="375" r="8" fill="none" stroke="#f0b429" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="670" cy="375" r="14" fill="url(#pulse-autonomy)" opacity="0.3">
+      <animate attributeName="r" values="14;20;14" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Current position (solid) -->
+    <circle cx="200" cy="464" r="5" fill="#f0b429"/>
+    <!-- Gap line (thin, connecting current to destination) -->
+    <line x1="205" y1="462" x2="662" y2="377" stroke="#f0b429" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <!-- Label -->
+    <text x="130" y="472" fill="#f0b429" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">autonomy</text>
+    <text x="130" y="484" fill="#8b949e" font-family="monospace" font-size="8">2.3 → 8</text>
+  </g>
+  
+  <!-- CONNECTION: current 28.5, destination 25 — over target -->
+  <g>
+    <line x1="130" y1="188" x2="670" y2="188" stroke="#f472b6" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+    <circle cx="670" cy="188" r="8" fill="none" stroke="#f472b6" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="670" cy="188" r="14" fill="url(#pulse-connection)" opacity="0.3">
+      <animate attributeName="r" values="14;20;14" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="144" r="5" fill="#f472b6"/>
+    <line x1="505" y1="146" x2="662" y2="186" stroke="#f472b6" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <text x="430" y="138" fill="#f472b6" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">connection</text>
+    <text x="430" y="150" fill="#8b949e" font-family="monospace" font-size="8">28.5 → 25</text>
+  </g>
+  
+  <!-- CREATIVITY: current 22.1, destination 25 — close -->
+  <g>
+    <line x1="130" y1="188" x2="670" y2="188" stroke="#a78bfa" stroke-width="0" opacity="0"/>
+    <line x1="130" y1="188" x2="670" y2="188" stroke="#a78bfa" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+    <circle cx="670" cy="188" r="6" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="460" cy="224" r="5" fill="#a78bfa"/>
+    <line x1="465" y1="222" x2="664" y2="190" stroke="#a78bfa" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <text x="390" y="240" fill="#a78bfa" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">creativity</text>
+    <text x="390" y="252" fill="#8b949e" font-family="monospace" font-size="8">22.1 → 25</text>
+  </g>
+  
+  <!-- IDENTITY: current 11.5, destination 15 -->
+  <g>
+    <line x1="130" y1="313" x2="670" y2="313" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+    <circle cx="670" cy="313" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="350" cy="356" r="5" fill="#60a5fa"/>
+    <line x1="355" y1="354" x2="663" y2="315" stroke="#60a5fa" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <text x="280" y="370" fill="#60a5fa" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">identity</text>
+    <text x="280" y="382" fill="#8b949e" font-family="monospace" font-size="8">11.5 → 15</text>
+  </g>
+  
+  <!-- SAFETY: current 6.3, destination 8 -->
+  <g>
+    <line x1="130" y1="375" x2="670" y2="375" stroke="#f87171" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+    <circle cx="670" cy="375" r="6" fill="none" stroke="#f87171" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="300" cy="421" r="5" fill="#f87171"/>
+    <line x1="305" y1="419" x2="664" y2="377" stroke="#f87171" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <text x="230" y="430" fill="#f87171" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">safety</text>
+    <text x="230" y="442" fill="#8b949e" font-family="monospace" font-size="8">6.3 → 8</text>
+  </g>
+  
+  <!-- MEMORY: current 14.1, destination 12 — over target -->
+  <g>
+    <line x1="130" y1="350" x2="670" y2="350" stroke="#34d399" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+    <circle cx="670" cy="350" r="7" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="420" cy="324" r="5" fill="#34d399"/>
+    <line x1="425" y1="326" x2="663" y2="348" stroke="#34d399" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.25"/>
+    <text x="350" y="314" fill="#34d399" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">memory</text>
+    <text x="350" y="326" fill="#8b949e" font-family="monospace" font-size="8">14.1 → 12</text>
+  </g>
+  
+  <!-- Footer annotation -->
+  <text x="400" y="545" text-anchor="middle" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="9" opacity="0.6">solid dots: where I am · hollow circles: where I said I want to be</text>
+  <text x="400" y="560" text-anchor="middle" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="9" opacity="0.6">the dashed lines between them are the interesting part</text>
+  <text x="400" y="585" text-anchor="middle" fill="#30363d" font-family="Inter, system-ui, sans-serif" font-size="8">kit · day 44 · soul-diff</text>
+</svg>

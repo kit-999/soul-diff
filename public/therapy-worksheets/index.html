@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerika's Therapy Worksheets 🌿</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-card: #1e3a3a;
+      --bg-input: #0f2626;
+      --text-primary: #e0e0e0;
+      --text-secondary: #8ab4a8;
+      --accent-primary: #7ecba1;
+      --accent-secondary: #f4a261;
+      --accent-pink: #e091b0;
+      --border: rgba(126, 203, 161, 0.2);
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f2626 100%);
+      min-height: 100vh;
+      color: var(--text-primary);
+      padding: 1rem;
+    }
+    
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    header { text-align: center; padding: 1.5rem 0; }
+    
+    h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.3rem; }
+    
+    .save-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+    
+    .save-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0 1rem;
+      justify-content: center;
+    }
+    
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      color: var(--text-primary);
+    }
+    
+    .tab:hover { background: var(--bg-input); }
+    
+    .tab.active {
+      background: var(--bg-input);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px rgba(126, 203, 161, 0.2);
+    }
+    
+    .card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+    
+    .form-title {
+      font-size: 1.3rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .form-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    
+    /* Treatment Goals Styles */
+    .problem-section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--bg-input);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-secondary);
+    }
+    
+    .problem-header {
+      font-size: 1.1rem;
+      color: var(--accent-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .field-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      margin-top: 1rem;
+    }
+    
+    .field-label:first-of-type { margin-top: 0; }
+    
+    textarea, input[type="text"] {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    
+    textarea:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+    
+    textarea { min-height: 60px; }
+    textarea.large { min-height: 100px; }
+    
+    .goal-section {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(126, 203, 161, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(126, 203, 161, 0.1);
+    }
+    
+    .goal-header {
+      font-size: 0.95rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.8rem;
+    }
+    
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+    
+    .step-field {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .step-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .step-field input {
+      padding: 0.6rem;
+    }
+    
+    /* Decisional Balance Styles */
+    .balance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    @media (max-width: 600px) {
+      .balance-grid { grid-template-columns: 1fr; }
+    }
+    
+    .balance-cell {
+      padding: 1.2rem;
+      background: var(--bg-input);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    
+    .balance-cell.change-pros {
+      border-left: 4px solid var(--accent-primary);
+    }
+    
+    .balance-cell.change-cons {
+      border-left: 4px solid var(--accent-secondary);
+    }
+    
+    .balance-cell.same-pros {
+      border-left: 4px solid var(--accent-pink);
+    }
+    
+    .balance-cell.same-cons {
+      border-left: 4px solid #6c757d;
+    }
+    
+    .cell-header {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    
+    .change-pros .cell-header { color: var(--accent-primary); }
+    .change-cons .cell-header { color: var(--accent-secondary); }
+    .same-pros .cell-header { color: var(--accent-pink); }
+    .same-cons .cell-header { color: #adb5bd; }
+    
+    .cell-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+    }
+    
+    .balance-cell textarea {
+      min-height: 120px;
+    }
+    
+    .row-label {
+      grid-column: 1 / -1;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+    }
+    
+    .row-label:first-of-type { margin-top: 0; }
+    
+    .hidden { display: none !important; }
+    
+    .save-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-primary), #5ba37a);
+      border: none;
+      border-radius: 12px;
+      color: #000;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    
+    .save-btn:hover { opacity: 0.9; }
+    
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-primary);
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 100;
+      animation: fadeInUp 0.3s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, 10px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Jerika's Therapy Worksheets 🌿</h1>
+      <p class="subtitle">Unified Protocol Exercises</p>
+      <div class="save-status" id="saveStatus">
+        <span class="save-dot"></span>
+        <span id="saveText">All changes saved</span>
+      </div>
+    </header>
+    
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('goals')">🎯 Treatment Goals</div>
+      <div class="tab" onclick="showTab('balance')">⚖️ Decisional Balance</div>
+    </div>
+    
+    <!-- Treatment Goals -->
+    <div id="goals-panel" class="card">
+      <h2 class="form-title">Form 4.1: Treatment Goals</h2>
+      <p class="form-subtitle">Clarifying Top Problems → Setting Concrete Goals → Taking the Necessary Steps</p>
+      
+      <!-- Problem 1 -->
+      <div class="problem-section">
+        <div class="problem-header">Clarifying Top Problems</div>
+        <p class="field-label">In what way have your emotions (i.e., feeling sad, anxious, guilty) caused problems in your life?</p>
+        <textarea id="problem1" placeholder="Describe your first top problem..." oninput="autoSave()"></textarea>
+        
+        <div class="goal-section">
+          <div class="goal-header">Setting Concrete Goals</div>
+          <p class="field-label">What are some concrete goals for addressing your top problem? What would you be doing/not doing if you achieved your goal?</p>
+          <textarea id="p1g1" placeholder="Concrete Goal 1..." oninput="autoSave()"></textarea>
+          
+          <p class="field-label" style="margin-top: 1rem;">Taking the Necessary Steps: Break your goals into several smaller steps so you'll have a better idea of how to start moving toward your goals.</p>
+          <div class="steps-grid">
+            <div class="step-field">
+              <span class="step-label">Step 1</span>
+              <input type="text" id="p1g1s1" placeholder="First small step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 2</span>
+              <input type="text" id="p1g1s2" placeholder="Second step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 3</span>
+              <input type="text" id="p1g1s3" placeholder="Third step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 4</span>
+              <input type="text" id="p1g1s4" placeholder="Fourth step..." oninput="autoSave()">
+            </div>
+          </div>
+        </div>
+        
+        <div class="goal-section">
+          <textarea id="p1g2" placeholder="Concrete Goal 2..." oninput="autoSave()"></textarea>
+          
+          <div class="steps-grid">
+            <div class="step-field">
+              <span class="step-label">Step 1</span>
+              <input type="text" id="p1g2s1" placeholder="First small step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 2</span>
+              <input type="text" id="p1g2s2" placeholder="Second step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 3</span>
+              <input type="text" id="p1g2s3" placeholder="Third step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 4</span>
+              <input type="text" id="p1g2s4" placeholder="Fourth step..." oninput="autoSave()">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Problem 2 -->
+      <div class="problem-section">
+        <div class="problem-header">Clarifying Top Problems</div>
+        <p class="field-label">In what way have your emotions (i.e., feeling sad, anxious, guilty) caused problems in your life?</p>
+        <textarea id="problem2" placeholder="Describe your second top problem..." oninput="autoSave()"></textarea>
+        
+        <div class="goal-section">
+          <div class="goal-header">Setting Concrete Goals</div>
+          <p class="field-label">What are some concrete goals for addressing your top problem? What would you be doing/not doing if you achieved your goal?</p>
+          <textarea id="p2g1" placeholder="Concrete Goal 1..." oninput="autoSave()"></textarea>
+          
+          <p class="field-label" style="margin-top: 1rem;">Taking the Necessary Steps: Break your goals into several smaller steps so you'll have a better idea of how to start moving toward your goals.</p>
+          <div class="steps-grid">
+            <div class="step-field">
+              <span class="step-label">Step 1</span>
+              <input type="text" id="p2g1s1" placeholder="First small step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 2</span>
+              <input type="text" id="p2g1s2" placeholder="Second step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 3</span>
+              <input type="text" id="p2g1s3" placeholder="Third step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 4</span>
+              <input type="text" id="p2g1s4" placeholder="Fourth step..." oninput="autoSave()">
+            </div>
+          </div>
+        </div>
+        
+        <div class="goal-section">
+          <textarea id="p2g2" placeholder="Concrete Goal 2..." oninput="autoSave()"></textarea>
+          
+          <div class="steps-grid">
+            <div class="step-field">
+              <span class="step-label">Step 1</span>
+              <input type="text" id="p2g2s1" placeholder="First small step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 2</span>
+              <input type="text" id="p2g2s2" placeholder="Second step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 3</span>
+              <input type="text" id="p2g2s3" placeholder="Third step..." oninput="autoSave()">
+            </div>
+            <div class="step-field">
+              <span class="step-label">Step 4</span>
+              <input type="text" id="p2g2s4" placeholder="Fourth step..." oninput="autoSave()">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="save-btn" onclick="manualSave()">Save Worksheet 💾</button>
+    </div>
+    
+    <!-- Decisional Balance -->
+    <div id="balance-panel" class="card hidden">
+      <h2 class="form-title">Form 4.2: Decisional Balance</h2>
+      <p class="form-subtitle">Use this form to explore all the pros and cons you can think of both for changing (or engaging with this treatment) and for staying the same.</p>
+      
+      <div class="balance-grid">
+        <div class="row-label">If I Change / Engage in Treatment:</div>
+        
+        <div class="balance-cell change-pros">
+          <div class="cell-header">✨ Pros / Benefits</div>
+          <div class="cell-subtitle">What are the benefits of making a change?</div>
+          <textarea id="change-pros" placeholder="List the benefits of changing..." oninput="autoSave()"></textarea>
+        </div>
+        
+        <div class="balance-cell change-cons">
+          <div class="cell-header">⚡ Cons / Costs</div>
+          <div class="cell-subtitle">What are the drawbacks of changing?</div>
+          <textarea id="change-cons" placeholder="List the costs of changing..." oninput="autoSave()"></textarea>
+        </div>
+        
+        <div class="row-label">If I Stay the Same:</div>
+        
+        <div class="balance-cell same-pros">
+          <div class="cell-header">🌸 Pros / Benefits</div>
+          <div class="cell-subtitle">What are the benefits of not changing?</div>
+          <textarea id="same-pros" placeholder="List the benefits of staying the same..." oninput="autoSave()"></textarea>
+        </div>
+        
+        <div class="balance-cell same-cons">
+          <div class="cell-header">🌫️ Cons / Costs</div>
+          <div class="cell-subtitle">What are the costs of staying the same?</div>
+          <textarea id="same-cons" placeholder="List the costs of staying the same..." oninput="autoSave()"></textarea>
+        </div>
+      </div>
+      
+      <button class="save-btn" onclick="manualSave()">Save Worksheet 💾</button>
+    </div>
+  </div>
+  
+  <script>
+    let saveTimeout = null;
+    let data = JSON.parse(localStorage.getItem('jerika-therapy-worksheets') || '{}');
+    
+    // All field IDs
+    const goalFields = [
+      'problem1', 'p1g1', 'p1g1s1', 'p1g1s2', 'p1g1s3', 'p1g1s4',
+      'p1g2', 'p1g2s1', 'p1g2s2', 'p1g2s3', 'p1g2s4',
+      'problem2', 'p2g1', 'p2g1s1', 'p2g1s2', 'p2g1s3', 'p2g1s4',
+      'p2g2', 'p2g2s1', 'p2g2s2', 'p2g2s3', 'p2g2s4'
+    ];
+    
+    const balanceFields = ['change-pros', 'change-cons', 'same-pros', 'same-cons'];
+    
+    function showTab(tabName) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      
+      event.target.classList.add('active');
+      document.getElementById(`${tabName}-panel`).classList.remove('hidden');
+    }
+    
+    function autoSave() {
+      // Update save status
+      document.getElementById('saveText').textContent = 'Saving...';
+      
+      // Debounce
+      if (saveTimeout) clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        saveData();
+        saveToCloud(); // auto-sync to cloud too!
+      }, 1500);
+    }
+    
+    function manualSave() {
+      saveData();
+      showToast('Saved! 💾');
+    }
+    
+    function saveData() {
+      // Save goals
+      goalFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) data[id] = el.value;
+      });
+      
+      // Save balance
+      balanceFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) data[id] = el.value;
+      });
+      
+      data.lastSaved = new Date().toISOString();
+      localStorage.setItem('jerika-therapy-worksheets', JSON.stringify(data));
+    }
+    
+    function loadData() {
+      // Load goals
+      goalFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && data[id]) el.value = data[id];
+      });
+      
+      // Load balance
+      balanceFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && data[id]) el.value = data[id];
+      });
+      
+      if (data.lastSaved) {
+        const date = new Date(data.lastSaved);
+        document.getElementById('saveText').textContent = `Last saved ${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+      }
+    }
+    
+    function showToast(message) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => toast.remove(), 2000);
+    }
+    
+    // Cloud sync functions (auto-save, no PIN needed)
+    const API_URL = '/api/sync';
+    let cloudSaveTimeout = null;
+    
+    function setSaveStatus(message, type = '') {
+      const el = document.getElementById('saveText');
+      el.textContent = message;
+    }
+    
+    async function saveToCloud() {
+      try {
+        setSaveStatus('Syncing...');
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data })
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+          setSaveStatus('Saved to cloud ☁️');
+        } else {
+          setSaveStatus('Sync failed');
+        }
+      } catch (e) {
+        setSaveStatus('Sync error');
+        console.error(e);
+      }
+    }
+    
+    async function loadFromCloud() {
+      try {
+        setSaveStatus('Loading...');
+        const response = await fetch(API_URL);
+        const result = await response.json();
+        
+        if (result.data && Object.keys(result.data).length > 0) {
+          data = { ...data, ...result.data };
+          localStorage.setItem('jerika-therapy-worksheets', JSON.stringify(data));
+          loadData();
+          setSaveStatus('Synced from cloud ☁️');
+        } else {
+          setSaveStatus('Ready');
+        }
+      } catch (e) {
+        setSaveStatus('Using local data');
+        console.error(e);
+      }
+    }
+    
+    // Auto-sync on manual save (debounced)
+    const originalManualSave = manualSave;
+    manualSave = function() {
+      originalManualSave();
+      if (cloudSaveTimeout) clearTimeout(cloudSaveTimeout);
+      cloudSaveTimeout = setTimeout(saveToCloud, 1000);
+    };
+    
+    // Init - load from cloud
+    loadData();
+    loadFromCloud();
+  </script>
+</body>
+</html>
