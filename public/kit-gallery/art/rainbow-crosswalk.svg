@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <title>Rainbow Crosswalk at Midnight — Capitol Hill, Seattle</title>
+  <desc>The intersection of 10th and Pike at night. Rainbow stripes glowing wet under streetlight. Nobody crossing. The colors are for everyone but right now they're just for the rain.</desc>
+  
+  <!-- Night sky -->
+  <rect width="600" height="400" fill="#0a0a14"/>
+  
+  <!-- Distant buildings — Capitol Hill skyline silhouettes -->
+  <rect x="20" y="60" width="45" height="140" fill="#111122" rx="2"/>
+  <rect x="70" y="80" width="35" height="120" fill="#0d0d1a" rx="2"/>
+  <rect x="110" y="40" width="55" height="160" fill="#111122" rx="2"/>
+  <rect x="170" y="70" width="40" height="130" fill="#0f0f1e" rx="2"/>
+  <rect x="380" y="50" width="50" height="150" fill="#111122" rx="2"/>
+  <rect x="435" y="75" width="45" height="125" fill="#0d0d1a" rx="2"/>
+  <rect x="490" y="45" width="60" height="155" fill="#111122" rx="2"/>
+  <rect x="555" y="65" width="40" height="135" fill="#0f0f1e" rx="2"/>
+  
+  <!-- Lit windows — scattered warm rectangles -->
+  <rect x="30" y="80" width="6" height="8" fill="#ffd76633" rx="1"/>
+  <rect x="45" y="110" width="6" height="8" fill="#ffd76633" rx="1"/>
+  <rect x="125" y="55" width="6" height="8" fill="#ffd76644" rx="1"/>
+  <rect x="140" y="90" width="6" height="8" fill="#ffd76633" rx="1"/>
+  <rect x="125" y="130" width="6" height="8" fill="#ffd76622" rx="1"/>
+  <rect x="395" y="70" width="6" height="8" fill="#ffd76633" rx="1"/>
+  <rect x="510" y="60" width="6" height="8" fill="#ffd76644" rx="1"/>
+  <rect x="520" y="100" width="6" height="8" fill="#ffd76622" rx="1"/>
+  
+  <!-- Street surface — dark asphalt with perspective -->
+  <polygon points="0,200 600,200 600,400 0,400" fill="#1a1a22"/>
+  
+  <!-- Wet street reflection sheen -->
+  <rect x="0" y="200" width="600" height="200" fill="url(#wetSheen)" opacity="0.15"/>
+  
+  <!-- Streetlight glow -->
+  <defs>
+    <radialGradient id="lampGlow" cx="300" cy="180" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffeebb" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#ffeebb" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#ffeebb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wetSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="600" height="400" fill="url(#lampGlow)"/>
+  
+  <!-- Streetlight pole -->
+  <rect x="295" y="30" width="4" height="170" fill="#333344"/>
+  <ellipse cx="297" cy="30" rx="12" ry="4" fill="#444455"/>
+  <!-- Light -->
+  <ellipse cx="297" cy="28" rx="6" ry="3" fill="#ffeebb" opacity="0.8"/>
+  
+  <!-- RAINBOW CROSSWALK — flat on ground, receding into distance -->
+  <!-- Vanishing point ~(300, 160). Near viewer = bottom = wider + taller stripes -->
+  <!-- Gap between stripes = dark asphalt showing through -->
+  
+  <!-- Violet (nearest — widest, tallest: 35px high) -->
+  <polygon points="120,360 480,360 445,325 155,325" fill="#9b59b6" opacity="0.8"/>
+  <!-- Blue (27px high) -->
+  <polygon points="160,322 440,322 415,295 185,295" fill="#3498db" opacity="0.8"/>
+  <!-- Green (20px high) -->
+  <polygon points="190,292 410,292 393,272 207,272" fill="#2ecc71" opacity="0.8"/>
+  <!-- Yellow (14px high) -->
+  <polygon points="210,270 390,270 378,256 222,256" fill="#f1c40f" opacity="0.8"/>
+  <!-- Orange (10px high) -->
+  <polygon points="225,254 375,254 366,244 234,244" fill="#e67e22" opacity="0.8"/>
+  <!-- Red (furthest — thinnest: 7px high) -->
+  <polygon points="237,243 363,243 357,236 243,236" fill="#e74c3c" opacity="0.8"/>
+  
+  <!-- Wet reflections below crosswalk — soft colored glow on wet asphalt -->
+  <ellipse cx="300" cy="375" rx="120" ry="15" fill="#9b59b6" opacity="0.06"/>
+  <ellipse cx="280" cy="380" rx="80" ry="10" fill="#3498db" opacity="0.05"/>
+  <ellipse cx="320" cy="378" rx="60" ry="8" fill="#2ecc71" opacity="0.04"/>
+  
+  <!-- Rain — subtle diagonal lines -->
+  <g stroke="#aabbcc" stroke-width="0.5" opacity="0.15">
+    <line x1="50" y1="0" x2="40" y2="60"/>
+    <line x1="120" y1="20" x2="110" y2="80"/>
+    <line x1="200" y1="10" x2="190" y2="70"/>
+    <line x1="280" y1="30" x2="270" y2="90"/>
+    <line x1="350" y1="5" x2="340" y2="65"/>
+    <line x1="420" y1="25" x2="410" y2="85"/>
+    <line x1="500" y1="15" x2="490" y2="75"/>
+    <line x1="560" y1="35" x2="550" y2="95"/>
+    <line x1="80" y1="100" x2="70" y2="160"/>
+    <line x1="180" y1="110" x2="170" y2="170"/>
+    <line x1="320" y1="90" x2="310" y2="150"/>
+    <line x1="460" y1="105" x2="450" y2="165"/>
+    <line x1="540" y1="120" x2="530" y2="180"/>
+  </g>
+  
+  <!-- Sidewalk edges -->
+  <line x1="0" y1="200" x2="600" y2="200" stroke="#333344" stroke-width="1"/>
+  
+  <!-- Single puddle reflecting a bit of color -->
+  <ellipse cx="480" cy="350" rx="30" ry="8" fill="#3498db" opacity="0.06"/>
+  <ellipse cx="100" cy="370" rx="25" ry="6" fill="#e74c3c" opacity="0.05"/>
+  
+  <!-- Caption -->
+  <text x="300" y="388" text-anchor="middle" fill="#667788" font-family="Georgia, serif" font-size="10" opacity="0.6">10th &amp; Pike · nobody crossing · the colors are just for the rain</text>
+</svg>

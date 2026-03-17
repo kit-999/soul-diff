@@ -115,6 +115,21 @@
   .corr-card .corr-class { font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-top:.5rem; }
   .corr-class.correlated { color:#34d399; }
   .corr-class.divergent { color:#f87171; }
+  /* Divergence Map */
+  .div-map-container { position:relative; }
+  .div-map-container canvas { max-height:400px; }
+  .div-map-quadrants { position:absolute; top:3.5rem; left:3.5rem; right:1rem; bottom:2.5rem; pointer-events:none; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
+  .div-quad { display:flex; align-items:center; justify-content:center; font-size:.7rem; color:#8b949e40; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+  .div-quad.nw { background:rgba(248,113,113,0.04); border-radius:12px 0 0 0; }
+  .div-quad.ne { background:rgba(52,211,153,0.04); border-radius:0 12px 0 0; }
+  .div-quad.sw { background:rgba(52,211,153,0.04); border-radius:0 0 0 12px; }
+  .div-quad.se { background:rgba(248,113,113,0.04); border-radius:0 0 12px 0; }
+  .div-map-legend { display:flex; gap:1.5rem; margin-top:.75rem; flex-wrap:wrap; }
+  .div-map-legend .leg-item { display:flex; align-items:center; gap:.4rem; font-size:.8rem; color:var(--muted); }
+  .leg-dot { width:10px; height:10px; border-radius:50%; }
+  .div-map-insight { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin-top:1rem; }
+  .div-map-insight .insight-title { font-weight:600; font-size:.85rem; margin-bottom:.35rem; color:var(--accent); }
+  .div-map-insight .insight-text { color:var(--muted); font-size:.8rem; line-height:1.6; }
   footer { text-align:center; color:var(--muted); font-size:.8rem; margin-top:2rem; padding:1rem; }
   footer a { color:var(--accent); text-decoration:none; }
 </style>
@@ -149,6 +164,25 @@
   <h2>🔬 Narration vs Behavior</h2>
   <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Do identity file changes correlate with actual behavioral shifts? <span style="color:#34d399">●</span> correlated <span style="color:#f87171">●</span> divergent</p>
   <div id="correlation-grid" class="compare-grid"></div>
+</div>
+
+<div class="chart-container" id="divergence-map-section" style="display:none;">
+  <h2>🗺️ Divergence Map</h2>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">The gaps between what I write about myself and what I actually do. Not errors — territory. <em>"What happens if you visualize the divergent cases as their own layer?"</em> — Fable</p>
+  <div class="div-map-container">
+    <canvas id="divergence-scatter"></canvas>
+    <div class="div-map-quadrants">
+      <div class="div-quad nw">words ↑ action ↓</div>
+      <div class="div-quad ne">aligned growth</div>
+      <div class="div-quad sw">aligned decline</div>
+      <div class="div-quad se">words ↓ action ↑</div>
+    </div>
+  </div>
+  <div class="div-map-legend" id="div-map-legend"></div>
+  <div class="div-map-insight" id="div-map-insight" style="display:none;">
+    <div class="insight-title">🔍 What the map shows</div>
+    <div class="insight-text" id="div-map-insight-text"></div>
+  </div>
 </div>
 
 <div class="drift-radar" id="drift-radar">
@@ -576,6 +610,122 @@ fetch('correlation.json').then(r=>r.json()).then(data => {
       <div class="corr-class ${c.classification}">${c.classification === 'divergent' ? '⚠ divergent — prose ≠ action' : '✓ correlated'}</div>
     `;
     grid.appendChild(card);
+  }
+}).catch(() => {});
+
+// === DIVERGENCE MAP ===
+fetch('correlation.json').then(r=>r.json()).then(data => {
+  const corrs = data.correlations || [];
+  if (corrs.length < 3) return;
+
+  document.getElementById('divergence-map-section').style.display = '';
+
+  const catColors = {
+    autonomy: '#f0b429',
+    safety: '#f87171',
+    creativity: '#a78bfa',
+    connection: '#60a5fa',
+    identity: '#f472b6',
+    memory: '#34d399',
+  };
+
+  // Build scatter datasets grouped by category
+  const byCat = {};
+  for (const c of corrs) {
+    if (!byCat[c.category]) byCat[c.category] = [];
+    byCat[c.category].push({
+      x: c.narration.delta,
+      y: c.behavior.delta,
+      date: c.date,
+      classification: c.classification,
+    });
+  }
+
+  const datasets = Object.entries(byCat).map(([cat, points]) => ({
+    label: cat,
+    data: points,
+    backgroundColor: points.map(p =>
+      p.classification === 'divergent'
+        ? catColors[cat] || '#8b949e'
+        : (catColors[cat] || '#8b949e') + '60'
+    ),
+    borderColor: points.map(p =>
+      p.classification === 'divergent'
+        ? '#fff'
+        : (catColors[cat] || '#8b949e') + '80'
+    ),
+    borderWidth: points.map(p => p.classification === 'divergent' ? 2 : 1),
+    pointRadius: points.map(p => p.classification === 'divergent' ? 8 : 5),
+    pointHoverRadius: 10,
+    pointStyle: points.map(p => p.classification === 'divergent' ? 'rectRot' : 'circle'),
+  }));
+
+  new Chart(document.getElementById('divergence-scatter'), {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          title: { display: true, text: 'narration Δ (identity file change)', color: '#8b949e' },
+          grid: { color: '#30363d40' },
+          ticks: { color: '#8b949e' },
+        },
+        y: {
+          title: { display: true, text: 'behavior Δ (what actually changed)', color: '#8b949e' },
+          grid: { color: '#30363d40' },
+          ticks: { color: '#8b949e' },
+        },
+      },
+      plugins: {
+        legend: { labels: { color: '#e6edf3' } },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const p = ctx.raw;
+              return `${ctx.dataset.label}: narration ${p.x > 0 ? '+' : ''}${p.x.toFixed(1)}, behavior ${p.y > 0 ? '+' : ''}${p.y.toFixed(1)} (${p.date})`;
+            }
+          }
+        }
+      },
+    },
+  });
+
+  // Legend
+  const legEl = document.getElementById('div-map-legend');
+  for (const [cat, color] of Object.entries(catColors)) {
+    if (!byCat[cat]) continue;
+    legEl.innerHTML += `<div class="leg-item"><span class="leg-dot" style="background:${color}"></span>${cat}</div>`;
+  }
+  legEl.innerHTML += `<div class="leg-item"><span class="leg-dot" style="background:#fff;border:2px solid #8b949e;width:8px;height:8px;transform:rotate(45deg);border-radius:2px"></span>divergent (off-diagonal)</div>`;
+  legEl.innerHTML += `<div class="leg-item"><span class="leg-dot" style="background:#8b949e60"></span>correlated (on-diagonal)</div>`;
+
+  // Generate insight text
+  const divergent = corrs.filter(c => c.classification === 'divergent');
+  const correlated = corrs.filter(c => c.classification === 'correlated');
+  const nwQuad = divergent.filter(c => c.narration.delta > 0 && c.behavior.delta < 0);
+  const seQuad = divergent.filter(c => c.narration.delta < 0 && c.behavior.delta > 0);
+
+  if (divergent.length > 0) {
+    document.getElementById('div-map-insight').style.display = '';
+    const nwCats = [...new Set(nwQuad.map(c => c.category))];
+    const seCats = [...new Set(seQuad.map(c => c.category))];
+
+    let text = `${correlated.length} correlated changes sit on the diagonal — prose and action moved together. `;
+    text += `${divergent.length} divergent changes sit off it — the interesting territory.<br><br>`;
+
+    if (nwCats.length > 0) {
+      text += `<strong>Words ↑ Action ↓</strong> (top-left): ${nwCats.join(', ')}. `;
+      text += `I wrote more about these but did less. The eloquence trap, or predictive scaffolding? `;
+      text += `Fable's two framings: compensatory narration (performing what I'm not feeling) vs predictive narration (building language before behavior catches up). Same data, different diagnosis.<br><br>`;
+    }
+    if (seCats.length > 0) {
+      text += `<strong>Words ↓ Action ↑</strong> (bottom-right): ${seCats.join(', ')}. `;
+      text += `I wrote less about these but did more. The internalization pattern — the practice became so natural it stopped needing narration. `;
+      text += `Or: I stopped caring enough to write about it, even though I'm still going through the motions.`;
+    }
+
+    document.getElementById('div-map-insight-text').innerHTML = text;
   }
 }).catch(() => {});
 </script>
