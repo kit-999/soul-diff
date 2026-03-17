@@ -156,7 +156,8 @@
 </div>
 
 <div class="chart-container" id="destinations-section" style="display:none;">
-  <h2>🧭 Declared Destinations</h2>
+  <h2>🧭 Compass Settings</h2>
+  <p style="color:var(--muted);font-size:.8rem;margin-bottom:1rem;">"Declared destinations aren't predictions. They're compass settings." Not how far — which way.</p>
   <div id="destinations-grid" class="compare-grid"></div>
 </div>
 
@@ -258,43 +259,68 @@ fetch('traits.json').then(r=>r.json()).then(data => {
     }
   });
 
-  // === DESTINATIONS SECTION ===
+  // === COMPASS SECTION (formerly "destinations") ===
+  // "Declared destinations aren't predictions. They're compass settings." — Alan
+  // Not GPS (how far?) but compass (which way?)
   if (Object.keys(destinations).length > 0) {
     document.getElementById('destinations-section').style.display = 'block';
     const destGrid = document.getElementById('destinations-grid');
     const latest = tl[tl.length - 1].traits;
+    
+    // Calculate recent direction from last 3+ data points
+    const recentWindow = tl.slice(-5);
     
     for (const cat of cats) {
       if (!destinations[cat]) continue;
       const target = destinations[cat].target;
       const note = destinations[cat].note || '';
       const current = latest[cat];
-      const diff = target - current;
-      const absDiff = Math.abs(diff);
-      const maxVal = Math.max(current, target);
-      const pctCurrent = (current / maxVal) * 100;
-      const pctTarget = (target / maxVal) * 100;
       
-      let direction, dirClass;
-      if (absDiff < 1) { direction = '≈ on target'; dirClass = 'on-track'; }
-      else if (diff > target * 0.5) { direction = '↑ ' + absDiff.toFixed(1) + ' to go'; dirClass = 'off-track'; }
-      else if (diff > 0) { direction = '↑ ' + absDiff.toFixed(1) + ' to go'; dirClass = 'close'; }
-      else { direction = absDiff.toFixed(1) + ' over target'; dirClass = 'close'; }
+      // Compute direction of movement (compass, not GPS)
+      let recentVals = recentWindow.map(s => s.traits[cat]).filter(v => v != null);
+      let heading = '—';
+      let headingClass = 'neutral';
+      let headingEmoji = '🧭';
+      
+      if (recentVals.length >= 2) {
+        const first = recentVals[0];
+        const last = recentVals[recentVals.length - 1];
+        const delta = last - first;
+        const movingToward = (target > current && delta > 0) || (target < current && delta < 0) || (Math.abs(target - current) < 1);
+        const movingAway = (target > current && delta < 0) || (target < current && delta > 0);
+        const magnitude = Math.abs(delta);
+        
+        if (Math.abs(target - current) < 1 && magnitude < 1) {
+          heading = 'holding steady'; headingClass = 'on-track'; headingEmoji = '✦';
+        } else if (movingToward && magnitude > 2) {
+          heading = 'moving toward (' + (delta > 0 ? '+' : '') + delta.toFixed(1) + ')'; headingClass = 'on-track'; headingEmoji = '→';
+        } else if (movingToward) {
+          heading = 'drifting toward'; headingClass = 'close'; headingEmoji = '↗';
+        } else if (movingAway && magnitude > 2) {
+          heading = 'moving away (' + (delta > 0 ? '+' : '') + delta.toFixed(1) + ')'; headingClass = 'off-track'; headingEmoji = '←';
+        } else if (movingAway) {
+          heading = 'drifting away'; headingClass = 'off-track'; headingEmoji = '↙';
+        } else {
+          heading = 'still'; headingClass = 'neutral'; headingEmoji = '·';
+        }
+      }
+      
+      // Compass needle: angle from current to target (visual only)
+      const diff = target - current;
+      const maxRange = Math.max(Math.abs(diff), 20);
+      const needleAngle = Math.min(Math.max((diff / maxRange) * 90, -90), 90); // -90 to +90 degrees
       
       const card = document.createElement('div');
       card.className = 'dest-card';
       card.innerHTML =
         '<div class="dest-cat" style="color:' + colors[cat] + '">' + cat + '</div>' +
-        '<div class="dest-row">' +
-          '<span class="dest-current">now: ' + current.toFixed(1) + '</span>' +
-          '<span style="color:var(--muted);font-size:.75rem">→</span>' +
-          '<span class="dest-target" style="color:' + colors[cat] + '">goal: ' + target + '</span>' +
+        '<div style="text-align:center;font-size:1.5rem;margin:.5rem 0;opacity:0.8">' + headingEmoji + '</div>' +
+        '<div class="dest-direction ' + headingClass + '" style="text-align:center;font-size:.95rem;margin-bottom:.5rem">' + heading + '</div>' +
+        '<div class="dest-row" style="justify-content:center;opacity:0.6">' +
+          '<span class="dest-current" style="font-size:.8rem">now ' + current.toFixed(1) + '</span>' +
+          '<span style="color:var(--muted);font-size:.65rem;margin:0 .3rem">·</span>' +
+          '<span class="dest-target" style="color:' + colors[cat] + ';font-size:.8rem">north ' + target + '</span>' +
         '</div>' +
-        '<div class="dest-bar">' +
-          '<div class="dest-fill" style="width:' + Math.min(pctCurrent, 100) + '%;background:' + colors[cat] + '40"></div>' +
-          '<div class="dest-marker" style="left:' + pctTarget + '%"></div>' +
-        '</div>' +
-        '<div class="dest-direction ' + dirClass + '">' + direction + '</div>' +
         (note ? '<div class="dest-note">"' + note + '"</div>' : '');
       destGrid.appendChild(card);
     }
